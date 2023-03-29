@@ -1,0 +1,47 @@
+﻿<Page x:Class="Matrix.View.Pages.LoginPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Matrix.View.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+            xmlns:control="clr-namespace:Matrix.View.UserControls">
+    <Grid>
+        <Image Source="/Resource/Background.jpg" Stretch="Fill"/>
+        <Path VerticalAlignment="Top" HorizontalAlignment="Left" Data="{StaticResource Logo}" Fill="White" Margin="10,-35,0,0" Stretch="Fill" Height="35" Width="30"/>
+        <Border CornerRadius="8" Background="{DynamicResource BackSec}" Width="400" Height="380">
+            <Border.Effect>
+                <DropShadowEffect ShadowDepth="5" BlurRadius="7"/>
+            </Border.Effect>
+        </Border>
+        <Border CornerRadius="8" Background="{DynamicResource BackSec}" BorderBrush="{DynamicResource WinBrdr}" BorderThickness="1" Width="400" Height="380">
+            <Grid>
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Style="{DynamicResource Header}" Text="Авторизация" FontSize="30" HorizontalAlignment="Center" Margin="25,25,25,15" FontWeight="UltraBlack"/>
+                    <TextBlock Text="Адрес электронной почты" FontWeight="Bold" Foreground="{DynamicResource TextColor}" FontSize="20" Margin="50,0"/>
+                    <TextBox x:Name="LoginBox" Style="{DynamicResource txt}" FontSize="21" Height="35" Tag="Email"  Margin="50,5,50,10"/>
+                    <TextBlock Text="Пароль" FontWeight="Bold" Foreground="{DynamicResource TextColor}" FontSize="20" Margin="50,0"/>
+                    <PasswordBox x:Name="PasBox" FontSize="21" Height="35" Tag="Пароль" Margin="50,5" PasswordChanged="PasBox_PasswordChanged" />
+                    <TextBlock FontSize="14" Margin="50,0,45,0" HorizontalAlignment="Left" Foreground="{DynamicResource TextColor}"><Hyperlink x:Name="FrgtLink" Click="FrgtLink_Click"><Run Text="Забыли пароль?"/></Hyperlink></TextBlock>
+                    <CheckBox x:Name="SavePasCheck" Content="Запомнить пароль" Margin="50,5"/>
+                    <Button x:Name="LoginBtn" Style="{DynamicResource btn}" Foreground="White" Margin="50,10" Height="35" Width="294" Content="Войти" Click="LoginBtn_Click">
+                        <Button.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Добавить" />
+                                <MenuItem Header="Удалить" Tag="{DynamicResource DeleteIcon}"/>
+                                <MenuItem Header="Изменить"  />
+                            </ContextMenu>
+                        </Button.ContextMenu>
+                    </Button>
+                    <TextBlock FontSize="14" Margin="50,0,45,0" Foreground="{DynamicResource TextColor}"><Run Text="У вас нет учетной записи? "/><Hyperlink x:Name="RegClick" Click="RegClick_Click"><Run Text="Зарегестрироваться"/></Hyperlink></TextBlock>
+                    <TextBlock FontSize="14" Margin="50,0,45,0" Foreground="{DynamicResource TextColor}"><Hyperlink x:Name="LogWithoutAccount" Click="LogWithoutAccount_Click"><Run Text="Продолжить без аккаунта"/></Hyperlink></TextBlock>
+                </StackPanel>
+            </Grid>
+        </Border>
+        <control:CaptchChecker  x:Name="CaptchControl" Visibility="Collapsed" IsVisibleChanged="CaptchControl_IsVisibleChanged"/>
+        <control:ResetPas x:Name="resPas" Visibility="Collapsed" IsVisibleChanged="resPas_IsVisibleChanged"/>
+        <control:ResetPasNewPas x:Name="resNewPas" Visibility="Collapsed"/>
+        <control:EmailChecker x:Name="emailCheck" Visibility="Collapsed" IsVisibleChanged="emailCheck_IsVisibleChanged"/>
+    </Grid>
+</Page>

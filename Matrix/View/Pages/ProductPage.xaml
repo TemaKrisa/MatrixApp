@@ -1,0 +1,65 @@
+﻿<Page x:Class="Matrix.View.Pages.ProductPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Matrix.View.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ProductPage" Loaded="Page_Loaded">
+    <Grid>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Height="50" VerticalAlignment="Top">
+            <ComboBox x:Name="CategoryCombo" DisplayMemberPath="CategoryName"  Width="250" Height="33" VerticalAlignment="Center" SelectionChanged="BrandCombo_SelectionChanged"/>
+            <ComboBox x:Name="BrandCombo" DisplayMemberPath="BrandName" Margin="5,0"  Width="250" Height="33" VerticalAlignment="Center" SelectionChanged="BrandCombo_SelectionChanged"/>
+            <ComboBox x:Name="FilterCombo" Width="250"  Height="33" VerticalAlignment="Center" SelectionChanged="BrandCombo_SelectionChanged"/>
+        </StackPanel>
+        <ListView x:Name="ProductsList" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="0,50,0,0" d:ItemsSource="{d:SampleData ItemCount=5}" Background="Transparent" BorderThickness="0" >
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <EventSetter Event="PreviewMouseLeftButtonDown" Handler="ProductItem_MouseDown" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="ListViewItem">
+                                <Grid Height="317" Width="219" Margin="10" x:Name="ProductItem">
+                                    <Border CornerRadius="6" x:Name="itmBrdr" Background="White"/>
+                                    <Border>
+                                        <Grid>
+                                            <Border x:Name="DiscountBrdr" Margin="5" VerticalAlignment="Top" HorizontalAlignment="Left" Width="50" Height="20" CornerRadius="6" Background="Purple">
+                                                <TextBlock x:Name="proDisc" Text="{Binding Discount, StringFormat={}{0} %}" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="UltraBlack"/>
+                                            </Border>
+                                            <Image Source="{Binding Image}" VerticalAlignment="Top" HorizontalAlignment="Center" Width="150" Margin="32" Height="150"/>
+                                            <TextBlock Text="{Binding ProductName}" TextWrapping="WrapWithOverflow" FontWeight="DemiBold" Margin="32,195,32,0"/>
+                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="32,27">
+                                                <TextBlock Foreground="Black" FontWeight="Bold" Text="{Binding TotalPrice, StringFormat={}{0} ₽}" />
+                                                <TextBlock x:Name="OldPrice" TextDecorations="Strikethrough" Margin="5,0,0,0" Foreground="Gray" Text="{Binding Price, StringFormat={}{0} ₽}"/>
+                                            </StackPanel>
+                                            <TextBlock x:Name="StarRating" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="32,27" Text="★★★★★"/>
+                                        </Grid>
+                                    </Border>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="Text" SourceName="proDisc" Value="0 %">
+                                        <Setter Property="Visibility" TargetName="DiscountBrdr" Value="Collapsed"/>
+                                        <Setter Property="Visibility" TargetName="OldPrice" Value="Collapsed"/>
+                                    </Trigger>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Effect" TargetName="itmBrdr">
+                                            <Setter.Value>
+                                                <DropShadowEffect/>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ListView.ItemContainerStyle>
+        </ListView>
+    </Grid>
+</Page>

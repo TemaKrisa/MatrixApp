@@ -1,0 +1,80 @@
+﻿<Page x:Class="Matrix.View.Pages.CartPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Matrix.View.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="CartPage">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="521*"/>
+            <ColumnDefinition Width="300"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="75"/>
+            <RowDefinition Height="377*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Style="{DynamicResource Header}" FontWeight="UltraBlack" Margin="10,10,0,0" FontSize="36" VerticalAlignment="Top" HorizontalAlignment="Left"> Корзина</TextBlock>
+        <Grid Grid.Row="2" Grid.Column="2" Height="180" Width="250" VerticalAlignment="Center">
+            <Border CornerRadius="16" Background="{DynamicResource Back}">
+                <Border.Effect>
+                    <DropShadowEffect/>
+                </Border.Effect>
+            </Border>
+            <Border>
+                <StackPanel Orientation="Vertical" Margin="10">
+                    <Button x:Name="CreateOrderBtn" VerticalAlignment="Top" Style="{DynamicResource btn}" Height="50" Width="auto" Content="Перейти к оформлению" Click="CreateOrderBtn_Click"/>
+                    <TextBlock TextWrapping="Wrap" Foreground="{DynamicResource TextColor}">Доступные способы и время доставки можно выбрать при оформлении заказа</TextBlock>
+                    <Separator/>
+                    <TextBlock FontSize="20" Foreground="{DynamicResource TextColor}" HorizontalAlignment="Center" FontWeight="Black" Margin="0,5">Общая стоимость</TextBlock>
+                    <TextBlock FontSize="20" x:Name="txtCartTotal" Foreground="{DynamicResource TextColor}" HorizontalAlignment="Center" FontWeight="Black" Margin="0,5">1000</TextBlock>
+                </StackPanel>
+            </Border>
+        </Grid>
+        <Border CornerRadius="16" Margin="10" Grid.Row="1" Background="{DynamicResource Back}"/>
+        <ListView x:Name="CartList" Margin="15" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}" Background="Transparent" BorderThickness="0" >
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="ListViewItem">
+                                <Grid Height="105" x:Name="CartItem">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="110"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="232"/>
+                                        <ColumnDefinition Width="100"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Source="{Binding Product.Image}" Margin="10" Stretch="Fill"/>
+                                    <Grid Grid.Column="1">
+                                        <StackPanel Orientation="Vertical">
+                                            <TextBlock Text="{Binding Product.ProductName}" Foreground="{DynamicResource TextColor}"/>
+                                            <TextBlock Text="{Binding Product.CategoryNavigation.CategoryName}" Foreground="{DynamicResource TextColor}"/>
+                                        </StackPanel>
+                                        <Button x:Name="DelBtn" Style="{DynamicResource btn}" Background="Red" Height="25" Width="50" Foreground="White" Margin="0,5" VerticalAlignment="Bottom" Click="DelBtn_Click">Удалить</Button>
+                                    </Grid>
+                                    <Grid Grid.Column="2">
+                                        <TextBlock Text="{Binding TotalCosts, StringFormat={}{0} ₽}" FontWeight="Bold" FontSize="16" Foreground="{DynamicResource TextColor}"/>
+                                    </Grid>
+                                    <Grid Grid.Column="3">
+                                        <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="5">
+                                            <TextBox x:Name="txtProductCount" Text="{Binding Count}" Style="{DynamicResource txt}" FontSize="16" TextChanged="txtProductCount_TextChanged" PreviewTextInput="txtProductCount_PreviewTextInput"/>
+                                            <TextBlock Margin="0,5"  Foreground="{DynamicResource TextColor}" Text="{Binding Product.TotalPrice, StringFormat={}{0} ₽ / шт.}"/>
+                                        </StackPanel>
+                                    </Grid>
+                                    <Separator VerticalAlignment="Bottom" Grid.ColumnSpan="5"/>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ListView.ItemContainerStyle>
+        </ListView> 
+    </Grid>
+</Page>

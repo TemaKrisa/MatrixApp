@@ -1,0 +1,36 @@
+﻿<Page x:Class="Matrix.View.Pages.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Matrix.View.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="900"
+     Loaded="MainPage_Loaded">
+    <Grid Background="{DynamicResource Back}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="BackBtn" Style="{DynamicResource BackBtn}" IsEnabled="False" Height="35" Width="35" VerticalAlignment="Top" HorizontalAlignment="Left"  Margin="15,-35" WindowChrome.IsHitTestVisibleInChrome="True" Click="BackBtn_Click"/>
+        <StackPanel Orientation="Vertical" Margin="0,0,0,70" Width="77" >
+            <RadioButton x:Name="LoginBtn"  Content="Авторизация"   ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Content}"   Tag="{DynamicResource Requests2}" Checked="LoginBtn_Checked" FontSize="11" Width="64" Height="58"/>
+            <RadioButton x:Name="ProductBtn"  Content="Продукты"   ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Content}"    Tag="{DynamicResource Shop}" IsChecked="False" Checked="ProductBtn_Checked" FontSize="11" Width="64" Height="58"/>
+            <RadioButton x:Name="AccountBtn"  Content="Аккаунты"   ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Content}"   Tag="{DynamicResource Staff3}" IsChecked="False" Checked="AccountBtn_Checked" FontSize="11" Width="64" Height="58"/>
+            <RadioButton x:Name="CategoryBtn"  Content="Категории"   ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Content}"   Tag="{DynamicResource Staff3}" IsChecked="False" Checked="CategoryBtn_Checked" FontSize="11" Width="64" Height="58"/>
+            <RadioButton x:Name="ManufacturerBtn"  Content="Производители"   ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Content}"   Tag="{DynamicResource Staff3}" IsChecked="False" Checked="ManufacturerBtn_Checked" FontSize="11" Width="64" Height="58"/>
+            <RadioButton x:Name="BrandBtn"  Content="Бренды"   ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Content}"   Tag="{DynamicResource Staff3}" IsChecked="False" Checked="BrandBtn_Checked" FontSize="11" Width="64" Height="58"/>
+            <RadioButton x:Name="OrderBtn"  Content="Заказы"   ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Content}"   Tag="{DynamicResource  RequestTypes}" IsChecked="False" Checked="OrderPage_Checked" FontSize="11" Width="64" Height="58"/>
+            <RadioButton x:Name="ReportBtn"  Content="Отчёт"   ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Content}"   Tag="{DynamicResource Report2}" IsChecked="False" Checked="ReportBtn_Checked" FontSize="11" Width="64" Height="58"/>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" VerticalAlignment="Bottom">
+            <RadioButton x:Name="ProfileBtn" Content="Профиль" Tag="{DynamicResource Profile2}" ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Content}" Checked="ProfileBtn_Checked" Width="64" Height="58"/>
+            <RadioButton x:Name="CartBtn" Content="Корзина" Tag="{DynamicResource Cart}" ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Content}" Checked="CartBtn_Checked" Width="64" Height="58"/>
+            <RadioButton x:Name="SettBtn" Content="Настройки" Tag="{DynamicResource Settings2}" ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Content}" Checked="SettBtn_Checked" Width="64" Height="58"/>
+
+        </StackPanel>
+        <Border Grid.Column="1" Background="{DynamicResource BackSec}" CornerRadius="8,0,0,0" Grid.Row="1">
+            <Frame NavigationUIVisibility="Hidden" JournalOwnership="OwnsJournal" x:Name="RootFrame" Navigated="RootFrame_Navigated" ContentRendered="RootFrame_ContentRendered"/>
+        </Border>
+    </Grid>
+</Page>

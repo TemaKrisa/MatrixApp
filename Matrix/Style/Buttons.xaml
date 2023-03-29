@@ -1,0 +1,255 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style TargetType="Button" x:Key="btn">
+        <Setter Property="Width" Value="50"/>
+        <Setter Property="Background" Value="{DynamicResource ButtonMain}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextColor}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border CornerRadius="8" Background="{TemplateBinding Background}">
+                        <Grid>
+                            <Viewbox Stretch="Uniform">
+                                <ContentPresenter Content="{Binding Path=Content, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}"></ContentPresenter>
+                            </Viewbox>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" Value="0.3"/>
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Opacity" Value="0.9"/>
+            </Trigger>
+            <EventTrigger RoutedEvent="PreviewMouseDown">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation Storyboard.TargetProperty="Opacity" Duration="0:0:0.2" To="0.7"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+            <EventTrigger RoutedEvent="PreviewMouseUp">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation Storyboard.TargetProperty="Opacity" Duration="0:0:0.2" To="1"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+        </Style.Triggers>
+    </Style>
+
+
+    <Style TargetType="Button" x:Key="DTBtn">
+        <Setter Property="Width" Value="50"/>
+        <Setter Property="Background" Value="{DynamicResource BackSec}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextColor}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}">
+                        <Grid>
+                            <Viewbox Stretch="Uniform">
+                                <ContentPresenter   Content="{Binding Path=Content, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}"></ContentPresenter>
+                            </Viewbox>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Opacity" Value="0.9"/>
+            </Trigger>
+            <EventTrigger RoutedEvent="PreviewMouseDown">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation Storyboard.TargetProperty="Opacity" Duration="0:0:0.2" To="0.7"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+            <EventTrigger RoutedEvent="PreviewMouseUp">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation Storyboard.TargetProperty="Opacity" Duration="0:0:0.2" To="1"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="BackBtn" TargetType="Button">
+        <Setter Property="Background" Value="{DynamicResource Back}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextColor}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border CornerRadius="8" Background="{TemplateBinding Background}">
+                        <Viewbox Stretch="Fill" Margin="10">
+                            <Path Fill="{TemplateBinding Foreground}" Data="m12 4 1.4 1.4L7.8 11H20v2H7.8l5.6 5.6L12 20l-8-8 8-8z"/>
+                        </Viewbox>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="{DynamicResource BackSec}"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Foreground" Value="Gray"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <Style x:Key="QuestionBtn" TargetType="Button">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextColor}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border CornerRadius="8" Background="{TemplateBinding Background}">
+                        <Grid>
+                            <ContentPresenter/>
+                            <Viewbox Stretch="Fill" Margin="10">
+                                <Path Fill="{TemplateBinding Foreground}" Data="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                            </Viewbox>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Opacity" Value="0.8"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Foreground" Value="Gray"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="Button" x:Key="AdBtn">
+        <Setter Property="Foreground" Value="{DynamicResource TextColor}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}">
+                        <Grid>
+                            <Viewbox Stretch="Uniform">
+                                <ContentPresenter Margin="5" HorizontalAlignment="Center"   Content="{Binding Path=Content, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}" ></ContentPresenter>
+                            </Viewbox>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Opacity" Value="0.9"/>
+            </Trigger>
+            <EventTrigger RoutedEvent="PreviewMouseDown">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation Storyboard.TargetProperty="Opacity" Duration="0:0:0.2" To="0.7"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+            <EventTrigger RoutedEvent="PreviewMouseUp">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation Storyboard.TargetProperty="Opacity" Duration="0:0:0.2" To="1"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="RadioButton" >
+        <Setter Property="Height" Value="64"/>
+        <Setter Property="Width" Value="80"/>
+        <Setter Property="GroupName" Value="1"/>
+        <Setter Property="Width" Value="64"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="{DynamicResource TextColor}"/>
+        <Setter Property="FontSize" Value="11"/>
+        <Setter Property="Margin" Value="1,3"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RadioButton">
+                    <Border CornerRadius="8" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" Background="{TemplateBinding Background}">
+                        <Grid>
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Path x:Name="Icn" Data="{Binding Tag, RelativeSource={RelativeSource AncestorType={x:Type RadioButton}}}" Stretch="Fill" Width="24" Height="24"/>
+                                <Viewbox VerticalAlignment="Bottom" MaxHeight="22" HorizontalAlignment="Center" Stretch="Uniform" StretchDirection="Both" >
+                                    <Label  x:Name="ttl" Content="{TemplateBinding Content}" FontSize="{TemplateBinding FontSize}" Foreground="{TemplateBinding Foreground}"/>
+                                </Viewbox>
+                            </StackPanel>
+                            <Border x:Name="qwe" CornerRadius="2" Width="4" HorizontalAlignment="Left" Height="24" Background="{DynamicResource AccentColor}" Visibility="Collapsed"/>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="{DynamicResource IsMouseOver}"/>
+                            <Setter Property="Foreground" Value="#FFE0E0E0"/>
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter Property="Background" Value="{DynamicResource IsChckd}"/>
+                            <Setter Property="Foreground" Value="{DynamicResource AccentColor}"/>
+                            <Setter Property="Visibility" TargetName="qwe" Value="Visible"/>
+                            <Setter Property="Visibility" TargetName="ttl" Value="Collapsed"/>
+                            <Setter Property="Width" TargetName="Icn" Value="26"/>
+                            <Setter Property="Height" TargetName="Icn" Value="26"/>
+                            <Setter Property="Fill" TargetName="Icn" Value="{DynamicResource TextColor}"/>
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="False">
+                            <Setter Property="Stroke" TargetName="Icn" Value="{DynamicResource TextColor}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+   
+    <Style TargetType="{x:Type CheckBox}">
+        <Setter Property="Foreground" Value="{DynamicResource TextColor}"/>
+        <Setter Property="Background" Value="{DynamicResource Back}"/>
+        <Setter Property="BorderBrush" Value="#FFABADB3"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type CheckBox}">
+                    <Grid>
+                        <Border x:Name="brdr" Background="{TemplateBinding Background}" BorderThickness="1" BorderBrush="{TemplateBinding BorderBrush}" CornerRadius="6" Height="20" Width="20" ClipToBounds="True" HorizontalAlignment="Left">
+                            <Path x:Name="Mark" Fill="{DynamicResource Back}" Visibility="Collapsed" Data="M12.853,31.912c0,0-1.184,0.839,0,2.764s7.551,13.029,8.291,15.003    c0.74,1.974,1.579,3.208,4.096,2.616s5.133-1.431,6.218-3.553c1.086-2.122,6.515-15.003,11.154-22.307s7.403-11.549,8.242-12.437    s2.122-2.665-2.566-2.418S34.963,22.387,28.35,36.157c0,0-0.556,1.765-1.629-0.049c-1.463-2.475-2.627-4.392-3.491-5.725    c-0.546-0.842-1.567-2.221-3.319-1.925C18.578,28.705,14.531,30.086,12.853,31.912z" Height="10" Width="10" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="3"  Stretch="Fill" SnapsToDevicePixels="True"/>
+                        </Border>
+                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="25,0,0,0" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="Mark" Property="Visibility" Value="Visible"/>
+                            <Setter Property="Background" Value="{DynamicResource ButtonMain}"/>
+                            <Setter Property="BorderThickness" Value="0" TargetName="brdr"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="Button" x:Key="SearchBtn">
+        <Setter Property="Background" Value="{DynamicResource Back}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border CornerRadius="0,6,6,0" Background="{TemplateBinding Background}" >
+                        <Viewbox Stretch="UniformToFill" Margin="5">
+                            <Path Fill="{DynamicResource TextColor}" Data="M484.1,454.796l-110.5-110.6c29.8-36.3,47.6-82.8,47.6-133.4c0-116.3-94.3-210.6-210.6-210.6S0,94.496,0,210.796   s94.3,210.6,210.6,210.6c50.8,0,97.4-18,133.8-48l110.5,110.5c12.9,11.8,25,4.2,29.2,0C492.5,475.596,492.5,463.096,484.1,454.796z    M41.1,210.796c0-93.6,75.9-169.5,169.5-169.5s169.6,75.9,169.6,169.5s-75.9,169.5-169.5,169.5S41.1,304.396,41.1,210.796z"/>
+                        </Viewbox>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

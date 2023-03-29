@@ -1,0 +1,62 @@
+﻿<Page x:Class="Matrix.View.Pages.AccountPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Matrix.View.Pages" xmlns:c="clr-namespace:Matrix.View.UserControls"
+     Loaded="AccountPage_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="140"/>
+            <RowDefinition/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Button x:Name="AddBtn" Click="AddBtn_Click"  Background="{DynamicResource Back}"  Grid.Row="2" Style="{DynamicResource DTBtn}" Height="50" Width="auto" Content="Добавить"/>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="22"/>
+                <RowDefinition/>
+                <RowDefinition Height="22"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBlock Text="Фамилия" FontWeight="DemiBold" Foreground="{DynamicResource TextColor}" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="0" FontSize="16"/>
+            <TextBlock Text="Имя" FontWeight="DemiBold" Foreground="{DynamicResource TextColor}" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1" FontSize="16"/>
+            <TextBlock Text="Отчество" FontWeight="DemiBold" Foreground="{DynamicResource TextColor}" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="2" FontSize="16"/>
+            <TextBlock Text="Почта" FontWeight="DemiBold" Foreground="{DynamicResource TextColor}" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="0" FontSize="16" Grid.Row="2"/>
+            <TextBlock Text="Тип пользователя" FontWeight="DemiBold" Foreground="{DynamicResource TextColor}" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="2" FontSize="16" Grid.Row="2"/>
+            <TextBox x:Name="SurnameBox" Tag="Фамилия"  Style="{DynamicResource txt}"  VerticalAlignment="Center"  Margin="5,10" FontSize="18" Grid.Row="1" Grid.Column="0" TextChanged="SurnameBox_TextChanged"/>
+            <TextBox x:Name="NameBox" Tag="Имя" Style="{DynamicResource txt}"         VerticalAlignment="Center"  Margin="5,10" FontSize="18" Grid.Row="1" Grid.Column="1" TextChanged="SurnameBox_TextChanged"/>
+            <TextBox x:Name="MidnameBox" Tag="Отчество" Style="{DynamicResource txt}"  VerticalAlignment="Center"  Margin="5,10" FontSize="18" Grid.Row="1" Grid.Column="2" TextChanged="SurnameBox_TextChanged"/>
+            <TextBox x:Name="EmailBox" Tag="Почта" Style="{DynamicResource txt}" VerticalAlignment="Center"  Margin="5,10" FontSize="18" Grid.Row="3" Grid.ColumnSpan="2"  TextChanged="SurnameBox_TextChanged"/>
+            <ComboBox x:Name="UsertypeCombo" Grid.Row="3" Grid.Column="2"   Margin="5,10" FontSize="16" DisplayMemberPath="UsertypeName" SelectionChanged="UsertypeCombo_SelectionChanged"/>
+        </Grid>
+        <DataGrid ColumnWidth="*" x:Name="AccountTable" HorizontalContentAlignment="Center" Grid.Row="1" MouseDoubleClick="AccountTable_MouseDoubleClick">
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem x:Name="AddItem" Header="Добавить" Tag="{DynamicResource Add}" Click="AddBtn_Click"/>
+                    <MenuItem x:Name="ChangeItem" Header="Изменить"  Click="ChangeItem_Click" />
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Email}" Header="Почта"/>
+                <DataGridTextColumn Binding="{Binding UsertypeNavigation.UsertypeName}" Header="Тип пользователя"/>
+                <DataGridTextColumn Header="ФИО">
+                    <DataGridTextColumn.Binding>
+                        <MultiBinding StringFormat="{}{0} {1} {2}">
+                            <Binding Path="Surname"/>
+                            <Binding Path="Name"/>
+                            <Binding Path="Midname"/>
+                        </MultiBinding>
+                    </DataGridTextColumn.Binding>
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <c:AccountAdd x:Name="AccountAdd" Grid.RowSpan="5" Grid.ColumnSpan="5"  Visibility="Collapsed" IsVisibleChanged="AccountAdd_IsVisibleChanged"/>
+        <c:AccountChange x:Name="AccountChange" Grid.RowSpan="5" Grid.ColumnSpan="5"  Visibility="Collapsed" IsVisibleChanged="AccountChange_IsVisibleChanged"/>
+    </Grid>
+</Page>

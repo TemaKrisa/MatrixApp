@@ -1,0 +1,56 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style TargetType="ContextMenu">
+        <Setter Property="Background" Value="{DynamicResource Back}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource WinBrdr}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ContextMenu">
+                    <Border CornerRadius="6" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1" SnapsToDevicePixels="True">
+                        <ItemsPresenter Width="{TemplateBinding Width}"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <Style TargetType="MenuItem">
+        <Setter Property="Foreground" Value="{DynamicResource TextColor}"/>
+        <Setter Property="Background" Value="{DynamicResource Back}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="MenuItem">
+                    <Border CornerRadius="6" Margin="3" Background="{TemplateBinding Background}" >
+                        <Grid>
+                            <Path HorizontalAlignment="Left" Data="{Binding Tag, RelativeSource={RelativeSource AncestorType={x:Type MenuItem}}}" Stretch="Fill" Fill="{TemplateBinding Foreground}"  Width="20" Height="20" Margin="5,3" VerticalAlignment="Center"/>
+                            <ContentPresenter Margin="35,0" Content="{TemplateBinding Header}" VerticalAlignment="Center"/>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="{DynamicResource BackSec}"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Opacity" Value="0.9"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <Style  TargetType="ToolTip">
+        <Setter Property="OverridesDefaultStyle" Value="true" />
+        <Setter Property="HasDropShadow" Value="True" />
+        <Setter Property="Foreground" Value="{DynamicResource TextColor}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ToolTip">
+                    <Border CornerRadius="6" BorderBrush="{DynamicResource WinBrdr}" Background="{DynamicResource Back}" BorderThickness="1">
+                        <ContentPresenter Content="{TemplateBinding Content}" Margin="3"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

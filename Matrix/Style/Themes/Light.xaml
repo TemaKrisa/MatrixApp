@@ -1,0 +1,32 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <SolidColorBrush x:Key="BackSec" Color="#F9F9F9"/>
+    <SolidColorBrush x:Key="Back" Color="#F3F3F3"/>
+    <SolidColorBrush x:Key="TextColor" Color="#1A1A1A"/>
+    <SolidColorBrush x:Key="ButtonMain" Color="#4BC2FC"/>
+    <SolidColorBrush x:Key="ButtonSec" Color="Blue"/>
+    <SolidColorBrush x:Key="AccentColor" Color="#053B56"/>
+    <SolidColorBrush x:Key="IsChckd" Color="#FEFEFE"/>
+    <SolidColorBrush x:Key="IsMouseOver" Color="#FCFCFC"/>
+    <SolidColorBrush x:Key="WinBrdr" Color="#7A7A7A"/>
+    <Color x:Key="DisableDay1">Gray</Color>
+    <Color x:Key="DisableDay2">Gray</Color>
+    <Color x:Key="NormalDay1">Black</Color>
+    <Color x:Key="DatagridBrush">Gray</Color>
+    <Color x:Key="DatagridText">White</Color>
+    <Color x:Key="NormalDay2">Black</Color>
+    <Color x:Key="SelectedDay1">Blue</Color>
+    <Color x:Key="SelectedDay2">Blue</Color>
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/Style/IconsDictionary.xaml"/>
+        <ResourceDictionary Source="/Style/TextBoxes.xaml"/>
+        <ResourceDictionary Source="/Style/Buttons.xaml"/>
+        <ResourceDictionary Source="/Style/Comboboxes.xaml"/>
+        <ResourceDictionary Source="/Style/Datagrids.xaml"/>
+        <ResourceDictionary Source="/Style/DateTimeStyle.xaml"/>
+        <ResourceDictionary Source="/Style/ContextMenues.xaml"/>
+        <ResourceDictionary Source="/Style/ScrollViewers.xaml"/>
+        <ResourceDictionary Source="/Style/PasBoxes.xaml"/>
+
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

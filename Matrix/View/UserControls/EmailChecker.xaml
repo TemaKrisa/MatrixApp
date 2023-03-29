@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="Matrix.View.UserControls.EmailChecker"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Matrix.View.UserControls">
+    <Grid Background="#662B0505" Margin="0,-45,0,0" IsVisibleChanged="EmailGrid_IsVisibleChanged">
+        <Border Background="{DynamicResource BackSec}" CornerRadius="8" BorderThickness="1" BorderBrush="{DynamicResource WinBrdr}" Height="173" Width="345">
+            <Grid>
+                <Button x:Name="CloseBtn" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,5,5,0" Height="25" Width="36" Background="Transparent" BorderThickness="0" Click="EmailCancelBtn_Click">
+                    <Path Stretch="Fill" Fill="{DynamicResource TextColor}"  Data="M35.6 34.4L28 26.8l7.6-7.6c.2-.2.2-.5 0-.7l-.5-.5c-.2-.2-.5-.2-.7 0l-7.6 7.6-7.5-7.6c-.2-.2-.5-.2-.7 0l-.6.6c-.2.2-.2.5 0 .7l7.6 7.6-7.6 7.5c-.2.2-.2.5 0 .7l.5.5c.2.2.5.2.7 0l7.6-7.6 7.6 7.6c.2.2.5.2.7 0l.5-.5c.2-.2.2-.5 0-.7z" Margin="10,5" />
+                </Button>
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Style="{DynamicResource Header}" Text="Подтверждение почты" FontSize="25" HorizontalAlignment="Center" Margin="25,20,25,5" FontWeight="UltraBlack"/>
+                    <TextBlock Text="Введите код полученный на введенную почту" FontSize="14" Margin="10,5" Foreground="{DynamicResource TextColor}" FontWeight="Bold" />
+                    <TextBox x:Name="EmailCheckBox" Style="{DynamicResource txt}" Height="30.6"  FontSize="18" Margin="10,0" Tag="Код подтверждения"/>
+                    <Button x:Name="EmailEnterBtn" Style="{DynamicResource btn}" Foreground="White" Height="35" Margin="10" Width="auto" Content="Ввести" Click="EmailEnterBtn_Click"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>
+
