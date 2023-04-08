@@ -4,8 +4,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-Title="Matrix Store" Background="{DynamicResource Back}" MinHeight="450"  MinWidth="950">
-    <WindowChrome.WindowChrome>
+Title="Matrix Store"  MinHeight="450"  MinWidth="950">
+    <!--<WindowChrome.WindowChrome>
         <WindowChrome CornerRadius="24" GlassFrameThickness="0" ResizeBorderThickness="6" CaptionHeight="50" />
     </WindowChrome.WindowChrome>
     <Grid>
@@ -36,7 +36,7 @@ Title="Matrix Store" Background="{DynamicResource Back}" MinHeight="450"  MinWid
             </Grid.ColumnDefinitions>
             <TextBlock Margin="55,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="12"  Foreground="{DynamicResource TextColor}" Text="{Binding Title, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" Grid.Column="1"/>
             <Button x:Name="HelpBtn" Style="{DynamicResource QuestionBtn}" Width="38" HorizontalAlignment="Right"  Grid.Column="1" ToolTip="Справка" WindowChrome.IsHitTestVisibleInChrome="True" Click="HelpBtn_Click">
-                <!--<AccessText AccessKey="F"/>-->
+                --><!--<AccessText AccessKey="F"/>--><!--
             </Button>
             <StackPanel Orientation="Horizontal" Grid.Column="2" Margin="4,2">
                 <Button x:Name="MinimizerBtn" Click="MinimizeClick" WindowChrome.IsHitTestVisibleInChrome="True" Foreground="{DynamicResource TextColor}" Content="&#xE949;" FontFamily="Segoe MDL2 Assets" FontSize="10" Padding="15,15,15,5" Background="Transparent" BorderBrush="Transparent" />
@@ -55,5 +55,5 @@ Title="Matrix Store" Background="{DynamicResource Back}" MinHeight="450"  MinWid
                 <Button x:Name="CloseBtn" Click="CloseClick" WindowChrome.IsHitTestVisibleInChrome="True" Foreground="{DynamicResource TextColor}" Content="&#xE106;" FontFamily="Segoe MDL2 Assets" FontSize="10" Padding="15,10" Background="Transparent" BorderBrush="Transparent"/>
             </StackPanel>
         </Grid>
-    </Grid>
+    </Grid>-->
 </Window>

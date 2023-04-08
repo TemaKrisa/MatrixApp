@@ -4,6 +4,9 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Matrix.View.Pages" xmlns:c="clr-namespace:Matrix.View.UserControls"
+      xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+      MinHeight="450" MinWidth="800"
+      Foreground="{DynamicResource TextFillColorPrimaryBrush}"
      Loaded="AccountPage_Loaded">
     <Grid>
         <Grid.RowDefinitions>
@@ -11,7 +14,7 @@
             <RowDefinition/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        <Button x:Name="AddBtn" Click="AddBtn_Click"  Background="{DynamicResource Back}"  Grid.Row="2" Style="{DynamicResource DTBtn}" Height="50" Width="auto" Content="Добавить"/>
+        <ui:Button x:Name="AddBtn" Click="AddBtn_Click" Appearance="Info"  Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontWeight="Bold" FontSize="18" Content="Добавить"/>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
@@ -24,21 +27,21 @@
                 <RowDefinition Height="22"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <TextBlock Text="Фамилия" FontWeight="DemiBold" Foreground="{DynamicResource TextColor}" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="0" FontSize="16"/>
-            <TextBlock Text="Имя" FontWeight="DemiBold" Foreground="{DynamicResource TextColor}" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1" FontSize="16"/>
-            <TextBlock Text="Отчество" FontWeight="DemiBold" Foreground="{DynamicResource TextColor}" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="2" FontSize="16"/>
-            <TextBlock Text="Почта" FontWeight="DemiBold" Foreground="{DynamicResource TextColor}" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="0" FontSize="16" Grid.Row="2"/>
-            <TextBlock Text="Тип пользователя" FontWeight="DemiBold" Foreground="{DynamicResource TextColor}" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="2" FontSize="16" Grid.Row="2"/>
-            <TextBox x:Name="SurnameBox" Tag="Фамилия"  Style="{DynamicResource txt}"  VerticalAlignment="Center"  Margin="5,10" FontSize="18" Grid.Row="1" Grid.Column="0" TextChanged="SurnameBox_TextChanged"/>
-            <TextBox x:Name="NameBox" Tag="Имя" Style="{DynamicResource txt}"         VerticalAlignment="Center"  Margin="5,10" FontSize="18" Grid.Row="1" Grid.Column="1" TextChanged="SurnameBox_TextChanged"/>
-            <TextBox x:Name="MidnameBox" Tag="Отчество" Style="{DynamicResource txt}"  VerticalAlignment="Center"  Margin="5,10" FontSize="18" Grid.Row="1" Grid.Column="2" TextChanged="SurnameBox_TextChanged"/>
-            <TextBox x:Name="EmailBox" Tag="Почта" Style="{DynamicResource txt}" VerticalAlignment="Center"  Margin="5,10" FontSize="18" Grid.Row="3" Grid.ColumnSpan="2"  TextChanged="SurnameBox_TextChanged"/>
-            <ComboBox x:Name="UsertypeCombo" Grid.Row="3" Grid.Column="2"   Margin="5,10" FontSize="16" DisplayMemberPath="UsertypeName" SelectionChanged="UsertypeCombo_SelectionChanged"/>
+            <TextBlock Text="Фамилия" FontWeight="DemiBold" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="0" FontSize="16"/>
+            <TextBlock Text="Имя" FontWeight="DemiBold" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1" FontSize="16"/>
+            <TextBlock Text="Отчество" FontWeight="DemiBold" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="2" FontSize="16"/>
+            <TextBlock Text="Почта" FontWeight="DemiBold" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="0" FontSize="16" Grid.Row="2"/>
+            <TextBlock Text="Тип пользователя" FontWeight="DemiBold" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="2" FontSize="16" Grid.Row="2"/>
+            <ui:TextBox x:Name="SurnameBox" FontSize="16" PlaceholderText="Фамилия"  VerticalAlignment="Center"  Margin="5,5" Grid.Row="1" Grid.Column="0" TextChanged="SurnameBox_TextChanged"/>
+            <ui:TextBox x:Name="NameBox" PlaceholderText="Имя" VerticalAlignment="Center"  Margin="5,5" Grid.Row="1" Grid.Column="1" TextChanged="SurnameBox_TextChanged"/>
+            <ui:TextBox x:Name="MidnameBox" PlaceholderText="Отчество" VerticalAlignment="Center"  Margin="5,5" Grid.Row="1" Grid.Column="2" TextChanged="SurnameBox_TextChanged"/>
+            <ui:TextBox x:Name="EmailBox" PlaceholderText="Почта" VerticalAlignment="Center"  Margin="5,5" Grid.Row="3" Grid.ColumnSpan="2"  TextChanged="SurnameBox_TextChanged"/>
+            <ComboBox x:Name="UsertypeCombo" Grid.Row="3" IsEditable="True" Grid.Column="2"  Margin="5,5" DisplayMemberPath="UsertypeName" SelectionChanged="UsertypeCombo_SelectionChanged"/>
         </Grid>
-        <DataGrid ColumnWidth="*" x:Name="AccountTable" HorizontalContentAlignment="Center" Grid.Row="1" MouseDoubleClick="AccountTable_MouseDoubleClick">
+        <DataGrid ColumnWidth="*" RowHeaderWidth="0" x:Name="AccountTable" HorizontalContentAlignment="Center" IsReadOnly="True" AutoGenerateColumns="False" Grid.Row="1" MouseDoubleClick="AccountTable_MouseDoubleClick">
             <DataGrid.ContextMenu>
                 <ContextMenu>
-                    <MenuItem x:Name="AddItem" Header="Добавить" Tag="{DynamicResource Add}" Click="AddBtn_Click"/>
+                    <MenuItem x:Name="AddItem" Header="Добавить" Click="AddBtn_Click"/>
                     <MenuItem x:Name="ChangeItem" Header="Изменить"  Click="ChangeItem_Click" />
                 </ContextMenu>
             </DataGrid.ContextMenu>

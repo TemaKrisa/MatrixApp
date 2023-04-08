@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Matrix.View.Pages"
       mc:Ignorable="d" 
+            Foreground="{DynamicResource TextFillColorPrimaryBrush}"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="OrderDetailPage">
 
@@ -17,9 +18,9 @@
             <RowDefinition Height="75"/>
             <RowDefinition Height="377*"/>
         </Grid.RowDefinitions>
-        <TextBlock Style="{DynamicResource Header}" FontWeight="UltraBlack" Margin="10,10,0,0" FontSize="36" VerticalAlignment="Top" HorizontalAlignment="Left"> Товары заказа</TextBlock>
-        <Border CornerRadius="16" Margin="10" Grid.Row="1" Background="{DynamicResource Back}"/>
-        <ListView x:Name="OrderList" Margin="15" Grid.Row="1" Background="Transparent" BorderThickness="0" >
+        <TextBlock FontWeight="UltraBlack" Margin="10,10,0,0" FontSize="36" VerticalAlignment="Top" HorizontalAlignment="Left"> Товары заказа</TextBlock>
+        <Border CornerRadius="16" Margin="10" Grid.Row="1"/>
+        <ListView x:Name="OrderList" Margin="15" Grid.Row="1" Background="Transparent" BorderThickness="0" d:ItemsSource="{d:SampleData ItemCount=5}" >
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="Template">
@@ -35,13 +36,13 @@
                                     <Image Source="{Binding ProductNavigation.Image}" Margin="10" Stretch="Fill"/>
                                     <Grid Grid.Column="1">
                                         <StackPanel Orientation="Vertical">
-                                            <TextBlock Text="{Binding ProductNavigation.ProductName}" Foreground="{DynamicResource TextColor}"/>
-                                            <TextBlock Text="{Binding ProductNavigation.CategoryNavigation.CategoryName}" Foreground="{DynamicResource TextColor}"/>
+                                            <TextBlock Text="{Binding ProductNavigation.ProductName}" />
+                                            <TextBlock Text="{Binding ProductNavigation.CategoryNavigation.CategoryName}"/>
                                         </StackPanel>
                                     </Grid>
                                     <Grid Grid.Column="3">
                                         <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="5">
-                                            <TextBlock x:Name="txtProductCount" Text="{Binding Count, StringFormat={}{0} штук}" FontSize="16" Foreground="{DynamicResource TextColor}"/>
+                                            <TextBlock x:Name="txtProductCount" Text="{Binding Count, StringFormat={}{0} штук}" FontSize="16"/>
                                             <TextBlock Margin="0,5"  Foreground="{DynamicResource TextColor}" Text="{Binding ProductNavigation.TotalPrice, StringFormat={}{0} ₽ / шт.}"/>
                                         </StackPanel>
                                     </Grid>
@@ -57,13 +58,13 @@
         </ListView>
         <Grid Grid.Row="1" Grid.Column="1">
             <StackPanel Orientation="Vertical" VerticalAlignment="Center" x:Name="DeliveryPanel">
-                <TextBlock Text="Статус" Foreground="{DynamicResource TextColor}" FontSize="24"/>
+                <TextBlock Text="Статус" FontSize="24"/>
                 <ComboBox x:Name="StatusCombo" DisplayMemberPath="OrderStatusName" SelectionChanged="StatusCombo_SelectionChanged"/>                
                 
-                <TextBlock x:Name="ClientName"   TextWrapping="Wrap" Foreground="{DynamicResource TextColor}" FontSize="24"/>
-                <TextBlock x:Name="ClientAdress" TextWrapping="Wrap" Foreground="{DynamicResource TextColor}" FontSize="24"/>
-                <TextBlock x:Name="ClientPhone" TextWrapping="Wrap" Foreground="{DynamicResource TextColor}" FontSize="24"/>
-                <TextBlock x:Name="DeliveryTxt" TextWrapping="Wrap" Foreground="{DynamicResource TextColor}" FontSize="24"/>
+                <TextBlock x:Name="ClientName"   TextWrapping="Wrap" FontSize="24"/>
+                <TextBlock x:Name="ClientAdress" TextWrapping="Wrap" FontSize="24"/>
+                <TextBlock x:Name="ClientPhone" TextWrapping="Wrap" FontSize="24"/>
+                <TextBlock x:Name="DeliveryTxt" TextWrapping="Wrap" FontSize="24"/>
             </StackPanel>
         </Grid>
     </Grid>

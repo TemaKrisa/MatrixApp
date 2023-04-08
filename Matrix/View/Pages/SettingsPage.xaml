@@ -3,7 +3,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      mc:Ignorable="d" 
+      mc:Ignorable="d"       Foreground="{DynamicResource TextFillColorPrimaryBrush}"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="SettingsPage">
 
@@ -12,14 +12,14 @@
 
             <Grid>
                 <StackPanel>
-                    <TextBlock FontSize="48" FontWeight="Black" Foreground="{DynamicResource TextColor}" Text="Настройки" Margin="50,10"/>
-                    <TextBlock FontSize="36" FontWeight="Bold" Foreground="{DynamicResource TextColor}" Text="Тема" Margin="50,5"/>
+                    <TextBlock FontSize="48" FontWeight="Black" Text="Настройки" Margin="50,10"/>
+                    <TextBlock FontSize="36"  Text="Тема" Margin="50,5"/>
                     <Label/>
                     <ComboBox x:Name="ThemeCombo" Margin="50,5" Width="300" HorizontalAlignment="Left">
                         <ComboBoxItem x:Name="LightItem" Content="Светлая" Selected="LightItem_Selected"/>
                         <ComboBoxItem x:Name="DarkItem" Content="Тёмная" Selected="DarkItem_Selected"/>
                     </ComboBox>
-                    <TextBlock Text="Другие ссылки" Foreground="{DynamicResource TextColor}" Margin="50,5" FontSize="16" FontWeight="DemiBold"/>
+                    <TextBlock Text="Другие ссылки" Margin="50,5" FontSize="16" FontWeight="DemiBold"/>
                     <TextBlock  FontSize="14" Margin="50,5"><Hyperlink x:Name="HelpLink" Click="HelpLink_Click">Справка</Hyperlink></TextBlock>
                     <TextBlock FontSize="14" Margin="50,5"><Hyperlink x:Name="AboutProgramLink" Click="AboutProgramLink_Click">О программе</Hyperlink></TextBlock>
                 </StackPanel>

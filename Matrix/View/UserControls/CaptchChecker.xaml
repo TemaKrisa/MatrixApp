@@ -3,30 +3,30 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Matrix.View.UserControls"
+             xmlns:local="clr-namespace:Matrix.View.UserControls" xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
              mc:Ignorable="d" 
+             Foreground="{DynamicResource TextFillColorPrimaryBrush}"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid Background="#662B0505" Margin="0,-45,0,0" IsVisibleChanged="CaptchGrid_IsVisibleChanged">
-        <Border Background="{DynamicResource BackSec}" CornerRadius="8" BorderThickness="1" BorderBrush="{DynamicResource WinBrdr}" Width="460" Height="405">
+        <Border Background="{DynamicResource ApplicationBackgroundBrush}" CornerRadius="8" BorderThickness="1" BorderBrush="{DynamicResource ControlElevationBorderBrush}" Width="460" Height="405">
             <Grid>
-                <Button x:Name="CloseBtn" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,15,15,0" Height="25" Width="36" Background="Transparent" BorderThickness="0" Click="CloseBtn_Click">
-                    <Path Stretch="Fill" Fill="{DynamicResource TextColor}"  Data="M35.6 34.4L28 26.8l7.6-7.6c.2-.2.2-.5 0-.7l-.5-.5c-.2-.2-.5-.2-.7 0l-7.6 7.6-7.5-7.6c-.2-.2-.5-.2-.7 0l-.6.6c-.2.2-.2.5 0 .7l7.6 7.6-7.6 7.5c-.2.2-.2.5 0 .7l.5.5c.2.2.5.2.7 0l7.6-7.6 7.6 7.6c.2.2.5.2.7 0l.5-.5c.2-.2.2-.5 0-.7z" Margin="10,5" />
-                </Button>
+                <ui:Button x:Name="CloseBtn" Appearance="Transparent" Icon="Dismiss24"  VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,5,5,0" FontSize="16"  Height="25" Width="36" Background="Transparent" BorderThickness="0" Click="CloseBtn_Click"/>
                 <StackPanel Orientation="Vertical">
-                    <TextBlock Style="{DynamicResource Header}" Text="Введите капчу" FontSize="25" HorizontalAlignment="Center" Margin="25,20,25,5" FontWeight="UltraBlack"/>
-                    <Border Height="200" Background="{DynamicResource Back}" VerticalAlignment="Top" Margin="25" CornerRadius="6" BorderBrush="{DynamicResource WinBrdr}" BorderThickness="1" >
+                    <TextBlock Text="Введите капчу" FontSize="25" HorizontalAlignment="Center" Margin="25,20,25,5" FontWeight="UltraBlack"/>
+                    <Border Height="200" Background="{DynamicResource ControlFillColorDefaultBrush}" VerticalAlignment="Top" Margin="25" CornerRadius="6" BorderThickness="1" >
                         <Grid>
                             <StackPanel Orientation="Horizontal" Name="SPanelSymbols" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                             <Canvas Name="CanvasNoise" ClipToBounds="True"/>
                         </Grid>
                     </Border>
                     <Grid Height="35">
-                        <TextBox x:Name="CaptchBox" Style="{DynamicResource txt}" Height="35" FontSize="24" Margin="10,0,65,0" Tag="Код подтверждения"/>
-                        <Button Margin="10,0" x:Name="UpdateCaptch" Style="{DynamicResource btn}" HorizontalAlignment="Right" Click="UpdateCaptch_Click">
-                            <Path Fill="White" Margin="1004" Stretch="Fill" Data="M6619 4768 c-178 -193 -476 -516 -661 -717 -186 -201 -338 -369 -338 -373 0 -5 187 -8 415 -8 l415 0 0 -68 c0 -89 -23 -272 -50 -397 -71 -324 -238 -665 -452 -920 -357 -426 -858 -698 -1408 -766 -132 -16 -396 -16 -520 0 -461 61 -848 239 -1206 557 l-70 63 -357 -357 c-196 -197 -357 -360 -357 -364 0 -21 231 -221 382 -331 972 -709 2275 -803 3348 -243 621 323 1134 865 1424 1502 176 385 286 855 286 1222 l0 102 411 0 c265 0 409 3 407 10 -4 12 -1331 1438 -1339 1439 -3 1 -151 -157 -330 -351z M4005 6864 c-165 -15 -402 -61 -570 -109 -1011 -290 -1818 -1068 -2149 -2070 -90 -272 -156 -635 -156 -865 0 -47 -3 -95 -6 -107 l-6 -23 -405 0 c-259 0 -403 -4 -401 -10 2 -5 145 -164 318 -352 831 -902 1011 -1098 1014 -1098 2 0 132 138 288 308 156 169 456 493 666 720 210 228 382 418 382 423 0 5 -174 9 -415 9 l-415 0 0 69 c0 162 48 424 112 616 346 1033 1410 1651 2478 1439 389 -77 738 -253 1036 -520 l80 -73 357 357 c196 197 357 361 357 365 0 11 -122 124 -233 216 -642 531 -1486 786 -2332 705z"/>
-                        </Button>
+                        <ui:TextBox x:Name="CaptchBox" Height="35" FontSize="15" Margin="10,0,65,0" PlaceholderText="Код подтверждения"/>
+                        <ui:Button Appearance="Info" Margin="10,0" x:Name="UpdateCaptch" Width="50" HorizontalAlignment="Right" Click="UpdateCaptch_Click">
+                            <Path Fill="{DynamicResource TextFillColorPrimaryBrush}"
+ Stretch="Fill" Data="M6619 4768 c-178 -193 -476 -516 -661 -717 -186 -201 -338 -369 -338 -373 0 -5 187 -8 415 -8 l415 0 0 -68 c0 -89 -23 -272 -50 -397 -71 -324 -238 -665 -452 -920 -357 -426 -858 -698 -1408 -766 -132 -16 -396 -16 -520 0 -461 61 -848 239 -1206 557 l-70 63 -357 -357 c-196 -197 -357 -360 -357 -364 0 -21 231 -221 382 -331 972 -709 2275 -803 3348 -243 621 323 1134 865 1424 1502 176 385 286 855 286 1222 l0 102 411 0 c265 0 409 3 407 10 -4 12 -1331 1438 -1339 1439 -3 1 -151 -157 -330 -351z M4005 6864 c-165 -15 -402 -61 -570 -109 -1011 -290 -1818 -1068 -2149 -2070 -90 -272 -156 -635 -156 -865 0 -47 -3 -95 -6 -107 l-6 -23 -405 0 c-259 0 -403 -4 -401 -10 2 -5 145 -164 318 -352 831 -902 1011 -1098 1014 -1098 2 0 132 138 288 308 156 169 456 493 666 720 210 228 382 418 382 423 0 5 -174 9 -415 9 l-415 0 0 69 c0 162 48 424 112 616 346 1033 1410 1651 2478 1439 389 -77 738 -253 1036 -520 l80 -73 357 357 c196 197 357 361 357 365 0 11 -122 124 -233 216 -642 531 -1486 786 -2332 705z"/>
+                        </ui:Button>
                     </Grid>
-                    <Button x:Name="EnterBtn" Style="{DynamicResource btn}" Foreground="White" Height="35" Margin="10" Width="auto" Content="Ввести" Click="EnterBtn_Click"/>
+                    <ui:Button x:Name="EnterBtn" Appearance="Info" HorizontalAlignment="Stretch" FontSize="20" FontWeight="Bold" Foreground="White" Height="35" Margin="10" Width="auto" Content="Ввести" Click="EnterBtn_Click"/>
                 </StackPanel>
             </Grid>
         </Border>

@@ -6,36 +6,37 @@
       xmlns:local="clr-namespace:Matrix.View.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-            xmlns:control="clr-namespace:Matrix.View.UserControls">
+      Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+            xmlns:control="clr-namespace:Matrix.View.UserControls" xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml">
     <Grid>
         <Image Source="/Resource/Background.jpg" Stretch="Fill"/>
         <Path VerticalAlignment="Top" HorizontalAlignment="Left" Data="{StaticResource Logo}" Fill="White" Margin="10,-35,0,0" Stretch="Fill" Height="35" Width="30"/>
-        <Border CornerRadius="8" Background="{DynamicResource BackSec}" Width="400" Height="380">
+        <Border CornerRadius="8" Width="400" Height="390">
             <Border.Effect>
                 <DropShadowEffect ShadowDepth="5" BlurRadius="7"/>
             </Border.Effect>
         </Border>
-        <Border CornerRadius="8" Background="{DynamicResource BackSec}" BorderBrush="{DynamicResource WinBrdr}" BorderThickness="1" Width="400" Height="380">
+        <Border CornerRadius="8" Background="{DynamicResource ApplicationBackgroundBrush}" BorderThickness="1" Width="400" Height="390">
             <Grid>
                 <StackPanel Orientation="Vertical">
-                    <TextBlock Style="{DynamicResource Header}" Text="Авторизация" FontSize="30" HorizontalAlignment="Center" Margin="25,25,25,15" FontWeight="UltraBlack"/>
-                    <TextBlock Text="Адрес электронной почты" FontWeight="Bold" Foreground="{DynamicResource TextColor}" FontSize="20" Margin="50,0"/>
-                    <TextBox x:Name="LoginBox" Style="{DynamicResource txt}" FontSize="21" Height="35" Tag="Email"  Margin="50,5,50,10"/>
-                    <TextBlock Text="Пароль" FontWeight="Bold" Foreground="{DynamicResource TextColor}" FontSize="20" Margin="50,0"/>
-                    <PasswordBox x:Name="PasBox" FontSize="21" Height="35" Tag="Пароль" Margin="50,5" PasswordChanged="PasBox_PasswordChanged" />
-                    <TextBlock FontSize="14" Margin="50,0,45,0" HorizontalAlignment="Left" Foreground="{DynamicResource TextColor}"><Hyperlink x:Name="FrgtLink" Click="FrgtLink_Click"><Run Text="Забыли пароль?"/></Hyperlink></TextBlock>
+                    <TextBlock Text="Авторизация" FontSize="30" HorizontalAlignment="Center" Margin="25,25,25,15" FontWeight="UltraBlack"/>
+                    <TextBlock Text="Адрес электронной почты"  FontSize="20" Margin="50,0"/>
+                    <ui:TextBox x:Name="LoginBox"  Height="35" PlaceholderText="Email"  Margin="50,5,50,10" Cursor="IBeam"/>
+                    <TextBlock Text="Пароль"  FontSize="20" Margin="50,0"/>
+                    <ui:PasswordBox x:Name="PasBox"  Height="35" PlaceholderText="Пароль" Margin="50,5" PasswordChanged="PasBox_PasswordChanged" Cursor="IBeam" />
+                    <TextBlock FontSize="14" Margin="50,0,45,0" HorizontalAlignment="Left"><Hyperlink x:Name="FrgtLink" Click="FrgtLink_Click"><Run Text="Забыли пароль?"/></Hyperlink></TextBlock>
                     <CheckBox x:Name="SavePasCheck" Content="Запомнить пароль" Margin="50,5"/>
-                    <Button x:Name="LoginBtn" Style="{DynamicResource btn}" Foreground="White" Margin="50,10" Height="35" Width="294" Content="Войти" Click="LoginBtn_Click">
+                    <ui:Button x:Name="LoginBtn" Appearance="Info" Margin="50,10" Height="35" Width="294" Content="Войти" Click="LoginBtn_Click">
                         <Button.ContextMenu>
                             <ContextMenu>
                                 <MenuItem Header="Добавить" />
-                                <MenuItem Header="Удалить" Tag="{DynamicResource DeleteIcon}"/>
+                                <MenuItem Header="Удалить"/>
                                 <MenuItem Header="Изменить"  />
                             </ContextMenu>
                         </Button.ContextMenu>
-                    </Button>
-                    <TextBlock FontSize="14" Margin="50,0,45,0" Foreground="{DynamicResource TextColor}"><Run Text="У вас нет учетной записи? "/><Hyperlink x:Name="RegClick" Click="RegClick_Click"><Run Text="Зарегестрироваться"/></Hyperlink></TextBlock>
-                    <TextBlock FontSize="14" Margin="50,0,45,0" Foreground="{DynamicResource TextColor}"><Hyperlink x:Name="LogWithoutAccount" Click="LogWithoutAccount_Click"><Run Text="Продолжить без аккаунта"/></Hyperlink></TextBlock>
+                    </ui:Button>
+                    <TextBlock FontSize="14" Margin="50,0,45,0"><Run Text="У вас нет учетной записи? "/><Hyperlink x:Name="RegClick" Click="RegClick_Click"><Run Text="Зарегестрироваться"/></Hyperlink></TextBlock>
+                    <TextBlock FontSize="14" Margin="50,0,45,0"><Hyperlink x:Name="LogWithoutAccount" Click="LogWithoutAccount_Click"><Run Text="Продолжить без аккаунта"/></Hyperlink></TextBlock>
                 </StackPanel>
             </Grid>
         </Border>

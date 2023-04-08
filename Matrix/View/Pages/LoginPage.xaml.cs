@@ -57,9 +57,6 @@ namespace Matrix.View.Pages
 
         private void PasBox_PasswordChanged(object sender, RoutedEventArgs e)
         {
-            PasswordBox pas = (PasswordBox)e.Source;
-            if (pas != null && pas.Template.FindName("RevealedPassword", pas) is TextBox textBox)
-                textBox.Text = pas.Password;
         }
 
         //Попытка авторизации после успешного ввода капчи

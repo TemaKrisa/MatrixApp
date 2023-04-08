@@ -3,45 +3,42 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Matrix.View.UserControls" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
-             mc:Ignorable="d">
+             xmlns:local="clr-namespace:Matrix.View.UserControls" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+             mc:Ignorable="d" Foreground="{DynamicResource TextFillColorPrimaryBrush}">
     <Grid x:Name="AccChangeGrid" Background="#662B0505" Margin="-100,-45,0,0" IsVisibleChanged="AccChangeGrid_IsVisibleChanged">
-        <Border Background="{DynamicResource BackSec}" CornerRadius="8" BorderThickness="1" BorderBrush="{DynamicResource WinBrdr}" Height="400" Width="500">
+        <Border Background="{DynamicResource ApplicationBackgroundBrush}" CornerRadius="8" BorderThickness="1" BorderBrush="{DynamicResource ControlElevationBorderBrush}" Height="435" Width="500">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Button x:Name="CloseBtn" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,5,5,0" Height="25" Width="36" Background="Transparent" BorderThickness="0" Click="CloseBtn_Click" Grid.Column="1">
-                    <Path Stretch="Fill" Fill="{DynamicResource TextColor}"  Data="M35.6 34.4L28 26.8l7.6-7.6c.2-.2.2-.5 0-.7l-.5-.5c-.2-.2-.5-.2-.7 0l-7.6 7.6-7.5-7.6c-.2-.2-.5-.2-.7 0l-.6.6c-.2.2-.2.5 0 .7l7.6 7.6-7.6 7.5c-.2.2-.2.5 0 .7l.5.5c.2.2.5.2.7 0l7.6-7.6 7.6 7.6c.2.2.5.2.7 0l.5-.5c.2-.2.2-.5 0-.7z" Margin="10,5" />
-                </Button>
-                <TextBlock Style="{DynamicResource Header}" Text="Изменение аккаунта" Grid.ColumnSpan="2" FontSize="25" HorizontalAlignment="Center" Margin="20" VerticalAlignment="Top" FontWeight="UltraBlack"/>
+                <ui:Button x:Name="CloseBtn" Grid.Column="1" Appearance="Transparent" Icon="Dismiss24"  VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,5,5,0" FontSize="16"  Height="25" Width="36" Background="Transparent" BorderThickness="0" Click="CloseBtn_Click"/>
+                <TextBlock Text="Изменение аккаунта" Grid.ColumnSpan="2" FontSize="25" HorizontalAlignment="Center" Margin="20" VerticalAlignment="Top" FontWeight="UltraBlack"/>
                 <StackPanel Orientation="Vertical" Margin="0,50,0,0">
-                    <TextBlock Text="Адрес электронной почты" FontSize="14" Margin="10,5" Foreground="{DynamicResource TextColor}" FontWeight="Bold" />
-                    <TextBox  Style="{DynamicResource txt}" x:Name="EmailBox" FontSize="16" Height="28" Margin="10,0" Tag="Email"/>
-                    <TextBlock Text="Пароль" FontSize="14" Margin="10,5" Foreground="{DynamicResource TextColor}" FontWeight="Bold" />
-                    <PasswordBox x:Name="PasswordBox" Height="28" FontSize="16" Margin="10,0" Tag="Email"/>
-                    <TextBlock Text="Фамилия" FontSize="14" Margin="10,5" Foreground="{DynamicResource TextColor}" FontWeight="Bold" />
-                    <TextBox x:Name="SurnameBox" Style="{DynamicResource txt}" FontSize="16" Height="28" Margin="10,0" Tag="Фамилия"/>
-                    <TextBlock Text="Имя" FontSize="14" Margin="10,5" Foreground="{DynamicResource TextColor}" FontWeight="Bold" />
-                    <TextBox x:Name="NameBox" Style="{DynamicResource txt}" FontSize="16" Height="28" Margin="10,0" Tag="Имя"/>
-                    <TextBlock Text="Отчетсво" FontSize="14" Margin="10,5" Foreground="{DynamicResource TextColor}" FontWeight="Bold" />
-                    <TextBox x:Name="MidnameBox" Style="{DynamicResource txt}" FontSize="16" Height="28" Margin="10,0" Tag="Отчество"/>
+                    <TextBlock Text="Адрес электронной почты" FontSize="14" Margin="10,5"   />
+                    <ui:TextBox   x:Name="EmailBox" Margin="10,0" PlaceholderText="Email"/>
+                    <TextBlock Text="Пароль" FontSize="14" Margin="10,5"   />
+                    <ui:PasswordBox x:Name="PasswordBox" Margin="10,0" PlaceholderText="Пароль"/>
+                    <TextBlock Text="Фамилия" FontSize="14" Margin="10,5"   />
+                    <ui:TextBox x:Name="SurnameBox" Margin="10,0" PlaceholderText="Фамилия"/>
+                    <TextBlock Text="Имя" FontSize="14" Margin="10,5"   />
+                    <ui:TextBox x:Name="NameBox" Margin="10,0" PlaceholderText="Имя"/>
+                    <TextBlock Text="Отчетсво" FontSize="14" Margin="10,5"   />
+                    <ui:TextBox x:Name="MidnameBox" Margin="10,0" PlaceholderText="Отчество"/>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" Margin="0,50,0,0" Grid.Column="1">
-                    <TextBlock Text="Тип пользователя" FontSize="14" Margin="10,5" Foreground="{DynamicResource TextColor}" FontWeight="Bold" />
-                    <ComboBox x:Name="UsertypeCombo" DisplayMemberPath="UsertypeName" Height="28" FontSize="16" Margin="10,0" Tag="Email"/>
-                    <TextBlock Text="Улица" FontSize="14" Margin="10,5" Foreground="{DynamicResource TextColor}" FontWeight="Bold" />
-                    <TextBox  Style="{DynamicResource txt}" x:Name="txtStreetBox" FontSize="16" Height="28" Margin="10,0" Tag="Улица"/>
-                    <TextBlock Text="Дом" FontSize="14" Margin="10,5" Foreground="{DynamicResource TextColor}" FontWeight="Bold" />
-                    <TextBox Style="{DynamicResource txt}" x:Name="txtHouseBox" Height="28" FontSize="16" Margin="10,0" Tag="Дом"/>
-                    <TextBlock Text="Квартира" FontSize="14" Margin="10,5" Foreground="{DynamicResource TextColor}" FontWeight="Bold" />
-                    <TextBox x:Name="txtFlatBox" Style="{DynamicResource txt}" FontSize="16" Height="28" Margin="10,0" Tag="Квартира"/>
-                    <TextBlock Text="Номер Телефона" FontSize="14" Margin="10,5" Foreground="{DynamicResource TextColor}" FontWeight="Bold" />
-                    <xctk:MaskedTextBox x:Name="txtPhoneBox" Mask="+7 (000)000-00-00"   Style="{DynamicResource txt}" FontSize="16" Height="28" Margin="10,0" Tag="Телефон"/>
-
+                    <TextBlock Text="Тип пользователя" FontSize="14" Margin="10,5"   />
+                    <ComboBox x:Name="UsertypeCombo" IsEditable="True" DisplayMemberPath="UsertypeName" Margin="10,0" Tag="Email"/>
+                    <TextBlock Text="Улица" FontSize="14" Margin="10,5"   />
+                    <ui:TextBox   x:Name="txtStreetBox" Margin="10,0" PlaceholderText="Улица"/>
+                    <TextBlock Text="Дом" FontSize="14" Margin="10,5"   />
+                    <ui:TextBox  x:Name="txtHouseBox" Margin="10,0" PlaceholderText="Дом"/>
+                    <TextBlock Text="Квартира" FontSize="14" Margin="10,5"   />
+                    <ui:TextBox x:Name="txtFlatBox" Margin="10,0" PlaceholderText="Квартира"/>
+                    <TextBlock Text="Номер Телефона" FontSize="14" Margin="10,5"   />
+                    <xctk:MaskedTextBox x:Name="txtPhoneBox" Mask="+7 (000)000-00-00"    FontSize="16" Height="28" Margin="10,0" Tag="Телефон"/>
                 </StackPanel>
-                <Button x:Name="AccountChangeBtn" Foreground="White" Style="{DynamicResource btn}" Height="35" Margin="10" VerticalAlignment="Bottom" Grid.ColumnSpan="2" Width="auto" Content="Изменить" Click="ChangeBtn_Click"/>
+                <ui:Button x:Name="AccountChangeBtn" HorizontalAlignment="Stretch" FontWeight="Bold" FontSize="20" Appearance="Info" Height="35" Margin="10" VerticalAlignment="Bottom" Grid.ColumnSpan="2" Width="auto" Content="Изменить" Click="ChangeBtn_Click"/>
             </Grid>
         </Border>
     </Grid>

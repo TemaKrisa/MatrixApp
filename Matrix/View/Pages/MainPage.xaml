@@ -3,34 +3,38 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:Matrix.View.Pages"
+      xmlns:local="clr-namespace:Matrix.View.Pages" 
+      xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
       mc:Ignorable="d" 
       d:DesignHeight="900"
+            Foreground="{DynamicResource TextFillColorPrimaryBrush}"
      Loaded="MainPage_Loaded">
     <Grid Background="{DynamicResource Back}">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="60" />
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="BackBtn" Style="{DynamicResource BackBtn}" IsEnabled="False" Height="35" Width="35" VerticalAlignment="Top" HorizontalAlignment="Left"  Margin="15,-35" WindowChrome.IsHitTestVisibleInChrome="True" Click="BackBtn_Click"/>
-        <StackPanel Orientation="Vertical" Margin="0,0,0,70" Width="77" >
-            <RadioButton x:Name="LoginBtn"  Content="Авторизация"   ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Content}"   Tag="{DynamicResource Requests2}" Checked="LoginBtn_Checked" FontSize="11" Width="64" Height="58"/>
-            <RadioButton x:Name="ProductBtn"  Content="Продукты"   ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Content}"    Tag="{DynamicResource Shop}" IsChecked="False" Checked="ProductBtn_Checked" FontSize="11" Width="64" Height="58"/>
-            <RadioButton x:Name="AccountBtn"  Content="Аккаунты"   ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Content}"   Tag="{DynamicResource Staff3}" IsChecked="False" Checked="AccountBtn_Checked" FontSize="11" Width="64" Height="58"/>
-            <RadioButton x:Name="CategoryBtn"  Content="Категории"   ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Content}"   Tag="{DynamicResource Staff3}" IsChecked="False" Checked="CategoryBtn_Checked" FontSize="11" Width="64" Height="58"/>
-            <RadioButton x:Name="ManufacturerBtn"  Content="Производители"   ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Content}"   Tag="{DynamicResource Staff3}" IsChecked="False" Checked="ManufacturerBtn_Checked" FontSize="11" Width="64" Height="58"/>
-            <RadioButton x:Name="BrandBtn"  Content="Бренды"   ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Content}"   Tag="{DynamicResource Staff3}" IsChecked="False" Checked="BrandBtn_Checked" FontSize="11" Width="64" Height="58"/>
-            <RadioButton x:Name="OrderBtn"  Content="Заказы"   ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Content}"   Tag="{DynamicResource  RequestTypes}" IsChecked="False" Checked="OrderPage_Checked" FontSize="11" Width="64" Height="58"/>
-            <RadioButton x:Name="ReportBtn"  Content="Отчёт"   ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Content}"   Tag="{DynamicResource Report2}" IsChecked="False" Checked="ReportBtn_Checked" FontSize="11" Width="64" Height="58"/>
-        </StackPanel>
-        <StackPanel Orientation="Vertical" VerticalAlignment="Bottom">
-            <RadioButton x:Name="ProfileBtn" Content="Профиль" Tag="{DynamicResource Profile2}" ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Content}" Checked="ProfileBtn_Checked" Width="64" Height="58"/>
-            <RadioButton x:Name="CartBtn" Content="Корзина" Tag="{DynamicResource Cart}" ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Content}" Checked="CartBtn_Checked" Width="64" Height="58"/>
-            <RadioButton x:Name="SettBtn" Content="Настройки" Tag="{DynamicResource Settings2}" ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Content}" Checked="SettBtn_Checked" Width="64" Height="58"/>
-
-        </StackPanel>
-        <Border Grid.Column="1" Background="{DynamicResource BackSec}" CornerRadius="8,0,0,0" Grid.Row="1">
-            <Frame NavigationUIVisibility="Hidden" JournalOwnership="OwnsJournal" x:Name="RootFrame" Navigated="RootFrame_Navigated" ContentRendered="RootFrame_ContentRendered"/>
+        <!--<Button x:Name="BackBtn" Style="{DynamicResource BackBtn}" IsEnabled="False" Height="35" Width="35" VerticalAlignment="Top" HorizontalAlignment="Left"  Margin="15,-35" WindowChrome.IsHitTestVisibleInChrome="True" Click="BackBtn_Click"/>-->
+        <ui:Button x:Name="BackBtn" Margin="15,-40" Icon="ArrowLeft24" Appearance="Transparent" BorderThickness="0" Width="35" Height="35" VerticalAlignment="Top" Click="BackBtn_Click" Cursor=""/>
+        <ui:NavigationStore x:Name="RootNavigation">
+            <ui:NavigationStore.Items>
+                <ui:NavigationItem  x:Name="LoginBtn"  Content="Авторизация" Icon="InprivateAccount24"   ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Content}" Click="LoginBtn_Checked"/>
+                <ui:NavigationItem  x:Name="ProductBtn"  Icon="Production24" Content="Продукты"   ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Content}" Click="ProductBtn_Checked"/>
+                <ui:NavigationItem  x:Name="AccountBtn" PageSource="Matrix/View/Pages/AccountPage.xaml" Icon="PersonAccounts24" Content="Аккаунты"   ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Content}" Click="AccountBtn_Checked"/>
+                <ui:NavigationItem  x:Name="CategoryBtn"  Icon="BorderAll24" Content="Категории"   ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Content}" Click="CategoryBtn_Checked"/>
+                <ui:NavigationItem  x:Name="ManufacturerBtn" Icon="BuildingFactory24"  Content="Производители"   ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Content}" Click="ManufacturerBtn_Checked"/>
+                <ui:NavigationItem  x:Name="BrandBtn"  Icon="Certificate24"  Content="Бренды"   ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Content}" Click="BrandBtn_Checked"/>
+                <ui:NavigationItem  x:Name="OrderBtn"  Icon="ClipboardTaskListLtr24" Content="Заказы"   ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Content}" Click="OrderPage_Checked"/>
+                <ui:NavigationItem  x:Name="ReportBtn" Icon="Notepad24"  Content="Отчёт"   ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Content}" Click="ReportBtn_Checked"/>
+            </ui:NavigationStore.Items>
+            <ui:NavigationStore.Footer>
+                <ui:NavigationItem x:Name="ProfileBtn" Content="Профиль" Icon="Person24" ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Content}" Click="ProfileBtn_Checked"/>
+                <ui:NavigationItem  x:Name="CartBtn" Content="Корзина" Icon="Cart24" ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Content}" Click="CartBtn_Checked"/>
+                <ui:NavigationItem x:Name="SettBtn" Content="Настройки" Icon="Settings24" ToolTip="{Binding RelativeSource={RelativeSource Self}, Path=Content}" PageType="{x:Type local:SettingsPage}" Click="SettBtn_Checked" />
+            </ui:NavigationStore.Footer>
+        </ui:NavigationStore>
+        <Border Grid.Column="1" Background="{DynamicResource ControlFillColorDefaultBrush}" CornerRadius="8,0,0,0" Cursor="">
+            <Frame x:Name="RootFrame" Navigated="RootFrame_Navigated" JournalOwnership="OwnsJournal" ContentRendered="RootFrame_ContentRendered"/>
         </Border>
     </Grid>
 </Page>

@@ -18,7 +18,7 @@ namespace Matrix.View.Windows
             var helpCommand = new RoutedCommand();
             helpCommand.InputGestures.Add(new KeyGesture(Key.F1, ModifierKeys.None));
             CommandBindings.Add(new CommandBinding(helpCommand, HelpBtn_Click));
-            Navigation.F1 = WFrame;
+            //Navigation./*F1*/ = WFrame;
             // Установка выбранной темы
             Application.Current.Resources.MergedDictionaries[0].Source = new Uri($"/Style/Themes/{AppSettings.Default.Theme}.xaml", UriKind.RelativeOrAbsolute); ;
         }

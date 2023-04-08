@@ -25,17 +25,15 @@ namespace Matrix.View.Pages
         private void DarkItem_Selected(object sender, RoutedEventArgs e) //Установка тёмной темы
         {
             AppSettings.Default.Theme = "Dark";
+            Wpf.Ui.Appearance.Theme.Apply(Wpf.Ui.Appearance.ThemeType.Dark);
             AppSettings.Default.Save();
-            Application.Current.Resources.MergedDictionaries.Clear();
-            Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = new Uri($"/Style/Themes/{AppSettings.Default.Theme}.xaml", UriKind.RelativeOrAbsolute) });
         }
 
         private void LightItem_Selected(object sender, RoutedEventArgs e) //Установка светлой темы
         {
             AppSettings.Default.Theme = "Light";
+            Wpf.Ui.Appearance.Theme.Apply(Wpf.Ui.Appearance.ThemeType.Light);
             AppSettings.Default.Save();
-            Application.Current.Resources.MergedDictionaries.Clear();
-            Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = new Uri($"/Style/Themes/{AppSettings.Default.Theme}.xaml", UriKind.RelativeOrAbsolute) });
         }
 
         private void AboutProgramLink_Click(object sender, RoutedEventArgs e) => Navigation.F2.Navigate(new AboutProgramPage());

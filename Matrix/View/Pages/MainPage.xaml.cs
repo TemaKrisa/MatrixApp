@@ -114,7 +114,8 @@ namespace Matrix.View.Pages
                     OrderBtn.Visibility = Visibility.Collapsed;
                     break;
             }
-                 ProductBtn.IsChecked = true;
+            ProductBtn.IsActive = true;
+            Navigation.F2.Navigate(new ProductPage(UserId, UserType));
         }
 
         //Выделение кнопки раздела в случае перехода в соответсвующий раздел
@@ -122,14 +123,193 @@ namespace Matrix.View.Pages
         {
             switch (Navigation.F2.Content?.ToString())
             {
-                case "AppealsService.View.Pages.RequestPage": break;
+                case "Matrix.View.Pages.AboutProgramPage":
+                    SettBtn.IsActive = true;
+                    ProductBtn.IsActive = false;
+                    AccountBtn.IsActive = false;
+                    ProfileBtn.IsActive = false;
+                    CartBtn.IsActive = false;
+                    ManufacturerBtn.IsActive = false;
+                    BrandBtn.IsActive = false;
+                    CategoryBtn.IsActive = false;
+                    ReportBtn.IsActive = false;
+                    OrderBtn.IsActive = false;
+                    break;
+                case "Matrix.View.Pages.AccountPage":
+                    AccountBtn.IsActive = true;
+                    SettBtn.IsActive = false;
+                    ProductBtn.IsActive = false;
+                    ProfileBtn.IsActive = false;
+                    CartBtn.IsActive = false;
+                    ManufacturerBtn.IsActive = false;
+                    BrandBtn.IsActive = false;
+                    CategoryBtn.IsActive = false;
+                    ReportBtn.IsActive = false;
+                    OrderBtn.IsActive = false;
+                    break;
+                case "Matrix.View.Pages.BrandPage":
+                    BrandBtn.IsActive = true;
+                    AccountBtn.IsActive = false;
+                    SettBtn.IsActive = false;
+                    ProductBtn.IsActive = false;
+                    ProfileBtn.IsActive = false;
+                    CartBtn.IsActive = false;
+                    ManufacturerBtn.IsActive = false;
+                    CategoryBtn.IsActive = false;
+                    ReportBtn.IsActive = false;
+                    OrderBtn.IsActive = false;
+                    break;
+                case "Matrix.View.Pages.CartPage":
+                    CartBtn.IsActive = true;
+                    AccountBtn.IsActive = false;
+                    SettBtn.IsActive = false;
+                    ProductBtn.IsActive = false;
+                    ProfileBtn.IsActive = false;
+                    ManufacturerBtn.IsActive = false;
+                    BrandBtn.IsActive = false;
+                    CategoryBtn.IsActive = false;
+                    ReportBtn.IsActive = false;
+                    OrderBtn.IsActive = false;
+                    break;
+                case "Matrix.View.Pages.CategoryPage":
+                    CategoryBtn.IsActive = true;
+                    AccountBtn.IsActive = false;
+                    SettBtn.IsActive = false;
+                    ProductBtn.IsActive = false;
+                    ProfileBtn.IsActive = false;
+                    CartBtn.IsActive = false;
+                    ManufacturerBtn.IsActive = false;
+                    BrandBtn.IsActive = false;
+                    ReportBtn.IsActive = false;
+                    OrderBtn.IsActive = false;
+                    break;
+                case "Matrix.View.Pages.CreateOrderPage":
+                    OrderBtn.IsActive = true;
+                    AccountBtn.IsActive = false;
+                    SettBtn.IsActive = false;
+                    ProductBtn.IsActive = false;
+                    ProfileBtn.IsActive = false;
+                    CartBtn.IsActive = false;
+                    ManufacturerBtn.IsActive = false;
+                    BrandBtn.IsActive = false;
+                    CategoryBtn.IsActive = false;
+                    ReportBtn.IsActive = false;
+                    break;
+                case "Matrix.View.Pages.ManufacturerPage":
+                    ManufacturerBtn.IsActive = true;
+                    AccountBtn.IsActive = false;
+                    SettBtn.IsActive = false;
+                    ProductBtn.IsActive = false;
+                    ProfileBtn.IsActive = false;
+                    CartBtn.IsActive = false;
+                    BrandBtn.IsActive = false;
+                    CategoryBtn.IsActive = false;
+                    ReportBtn.IsActive = false;
+                    OrderBtn.IsActive = false;
+                    break;
+                case "Matrix.View.Pages.OrderDetailChangePage":
+                    OrderBtn.IsActive = true;
+                    AccountBtn.IsActive = false;
+                    SettBtn.IsActive = false;
+                    ProductBtn.IsActive = false;
+                    ProfileBtn.IsActive = false;
+                    CartBtn.IsActive = false;
+                    ManufacturerBtn.IsActive = false;
+                    BrandBtn.IsActive = false;
+                    CategoryBtn.IsActive = false;
+                    ReportBtn.IsActive = false;
+                    break;
+                case "Matrix.View.Pages.OrderDetailPage":
+                    OrderBtn.IsActive = true;
+                    AccountBtn.IsActive = false;
+                    SettBtn.IsActive = false;
+                    ProductBtn.IsActive = false;
+                    ProfileBtn.IsActive = false;
+                    CartBtn.IsActive = false;
+                    ManufacturerBtn.IsActive = false;
+                    BrandBtn.IsActive = false;
+                    CategoryBtn.IsActive = false;
+                    ReportBtn.IsActive = false;
+                    break;
+                case "Matrix.View.Pages.OrderPage":
+                    OrderBtn.IsActive = true;
+                    AccountBtn.IsActive = false;
+                    SettBtn.IsActive = false;
+                    ProductBtn.IsActive = false;
+                    ProfileBtn.IsActive = false;
+                    CartBtn.IsActive = false;
+                    ManufacturerBtn.IsActive = false;
+                    BrandBtn.IsActive = false;
+                    CategoryBtn.IsActive = false;
+                    ReportBtn.IsActive = false;
+                    break;
+                case "Matrix.View.Pages.ProductDetailPage":
+                    ProductBtn.IsActive = true;
+                    AccountBtn.IsActive = false;
+                    SettBtn.IsActive = false;
+                    ProfileBtn.IsActive = false;
+                    CartBtn.IsActive = false;
+                    ManufacturerBtn.IsActive = false;
+                    BrandBtn.IsActive = false;
+                    CategoryBtn.IsActive = false;
+                    ReportBtn.IsActive = false;
+                    OrderBtn.IsActive = false;
+                    break;
+                case "Matrix.View.Pages.ProductPage":
+                    ProductBtn.IsActive = true;
+                    AccountBtn.IsActive = false;
+                    SettBtn.IsActive = false;
+                    ProfileBtn.IsActive = false;
+                    CartBtn.IsActive = false;
+                    ManufacturerBtn.IsActive = false;
+                    BrandBtn.IsActive = false;
+                    CategoryBtn.IsActive = false;
+                    ReportBtn.IsActive = false;
+                    OrderBtn.IsActive = false;
+                    break;
+                case "Matrix.View.Pages.ProfilePage":
+                    ProfileBtn.IsActive = true;
+                    AccountBtn.IsActive = false;
+                    SettBtn.IsActive = false;
+                    ProductBtn.IsActive = false;
+                    CartBtn.IsActive = false;
+                    ManufacturerBtn.IsActive = false;
+                    BrandBtn.IsActive = false;
+                    CategoryBtn.IsActive = false;
+                    ReportBtn.IsActive = false;
+                    OrderBtn.IsActive = false;
+                    break;
+                case "Matrix.View.Pages.ReportPage":
+                    ReportBtn.IsActive = true;
+                    AccountBtn.IsActive = false;
+                    SettBtn.IsActive = false;
+                    ProductBtn.IsActive = false;
+                    ProfileBtn.IsActive = false;
+                    CartBtn.IsActive = false;
+                    ManufacturerBtn.IsActive = false;
+                    BrandBtn.IsActive = false;
+                    CategoryBtn.IsActive = false;
+                    OrderBtn.IsActive = false;
+                    break;
+                case "Matrix.View.Pages.SettingsPage":
+                    SettBtn.IsActive = true;
+                    AccountBtn.IsActive = false;
+                    ProductBtn.IsActive = false;
+                    ProfileBtn.IsActive = false;
+                    CartBtn.IsActive = false;
+                    ManufacturerBtn.IsActive = false;
+                    BrandBtn.IsActive = false;
+                    CategoryBtn.IsActive = false;
+                    ReportBtn.IsActive = false;
+                    OrderBtn.IsActive = false;
+                    break;
             }
         }
 
         private void BackBtn_Click(object sender, RoutedEventArgs e) { if (Navigation.F2.CanGoBack) Navigation.F2.GoBack(); }
 
         //Определение доступности кнопки назад
-        private void RootFrame_ContentRendered(object sender, EventArgs e) => BackBtn.IsEnabled = Navigation.F2.CanGoBack;
+        private void RootFrame_ContentRendered(object sender, EventArgs e) { BackBtn.IsEnabled = true; }
 
         //Определение типа пользователя и отображение соответсвующих типу пользователя разделов
         private void MainPage_Loaded(object sender, RoutedEventArgs e)
@@ -139,7 +319,10 @@ namespace Matrix.View.Pages
 
         private void LoginBtn_Checked(object sender, RoutedEventArgs e) => Navigation.F1.Navigate(new LoginPage());
 
-        private void SettBtn_Checked(object sender, RoutedEventArgs e) => Navigation.F2.Navigate(new SettingsPage());
+        private void SettBtn_Checked(object sender, RoutedEventArgs e)
+        {
+            Navigation.F2.Navigate(new SettingsPage());
+        }
 
         private void ProductBtn_Checked(object sender, RoutedEventArgs e) => Navigation.F2.Navigate(new ProductPage(UserId, UserType));
 
@@ -158,15 +341,9 @@ namespace Matrix.View.Pages
             Navigation.F2.Navigate(new BrandPage());
         }
 
-        private void OrderPage_Checked(object sender, RoutedEventArgs e)
-        {
-            Navigation.F2.Navigate(new OrderPage(UserId,UserType));
+        private void OrderPage_Checked(object sender, RoutedEventArgs e) => Navigation.F2.Navigate(new OrderPage(UserId,UserType));
 
-        }
 
-        private void ReportBtn_Checked(object sender, RoutedEventArgs e)
-        {
-            Navigation.F2.Navigate(new ReportPage());
-        }
+        private void ReportBtn_Checked(object sender, RoutedEventArgs e) => Navigation.F2.Navigate(new ReportPage());
     }
 }

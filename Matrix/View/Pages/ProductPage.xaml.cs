@@ -45,6 +45,7 @@ namespace Matrix.View.Pages
         }
         private async Task UpdateData()
         {
+            ProductAddBtn.Visibility = UserType != 2 ? Visibility.Collapsed : Visibility.Visible;
             using CosmeticshopContext dc = new();
             var Prod = dc.Products.ToList();
             if(FilterCombo.SelectedIndex > 0)
@@ -80,5 +81,10 @@ namespace Matrix.View.Pages
         private void BrandCombo_SelectionChanged(object sender, SelectionChangedEventArgs e) => UpdateData();
 
         private void Page_Loaded(object sender, RoutedEventArgs e) => UpdateData();
+
+        private void ProductAddBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (UserType > 1) Navigation.F2.Navigate(new ProductDetailChangePage(null));
+        }
     }
 }

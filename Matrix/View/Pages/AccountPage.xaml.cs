@@ -1,5 +1,6 @@
 ﻿using Matrix.Model;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -18,6 +19,7 @@ namespace Matrix.View.Pages
 
         private async Task LoadData()
         {
+
             await using CosmeticshopContext dc = new();
             //Заполнение списка типов пользователя
             List<Usertype> result = await dc.Usertypes.ToListAsync();

@@ -6,8 +6,8 @@
       xmlns:local="clr-namespace:Matrix.View.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
+      Foreground="{DynamicResource TextFillColorPrimaryBrush}"
       Title="AboutProgramPage">
-
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -18,17 +18,17 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <StackPanel Margin="0,0,2,0">
-            <TextBlock x:Name="TitleTxt" Text="Matrix Store" FontWeight="UltraBlack" Foreground="{DynamicResource TextColor}" FontSize="24" Margin="25,10,0,0"/>
-            <TextBlock x:Name="VersionTxt" Text="Версия 1.0.0.0" Foreground="{DynamicResource TextColor}" FontSize="24" Margin="25,10,0,0"/>
-            <TextBlock x:Name="LicenseTxt" TextWrapping="Wrap" Text="Свободно распространяемое ПО" Foreground="{DynamicResource TextColor}" FontSize="24" Margin="25,10,0,0"/>
-            <TextBlock x:Name="OrganizationTxt" Text="БТСИиЭ" Foreground="{DynamicResource TextColor}" FontSize="24" Margin="25,10,0,0"/>
+            <TextBlock x:Name="TitleTxt" Text="Matrix Store" FontWeight="UltraBlack" FontSize="24" Margin="25,10,0,0"/>
+            <TextBlock x:Name="VersionTxt" Text="Версия 1.0.0.0" FontSize="24" Margin="25,10,0,0"/>
+            <TextBlock x:Name="LicenseTxt" TextWrapping="Wrap" Text="Свободно распространяемое ПО" FontSize="24" Margin="25,10,0,0"/>
+            <TextBlock x:Name="OrganizationTxt" Text="БТСИиЭ" FontSize="24" Margin="25,10,0,0"/>
         </StackPanel>
-        <Border CornerRadius="10" Margin="15" Background="{DynamicResource Back}" BorderBrush="{DynamicResource WinBrdr}" BorderThickness="2" Grid.Row="1" Grid.ColumnSpan="2">
-            <TextBlock x:Name="DescriptionTxt" Text="Программа предназначена для автоматизации магазина косметики" Foreground="{DynamicResource TextColor}" FontSize="24" Margin="10" TextWrapping="WrapWithOverflow"/>
+        <Border CornerRadius="10" Margin="15" Background="{DynamicResource ApplicationBackgroundBrush}" BorderThickness="2" Grid.Row="1" Grid.ColumnSpan="2">
+            <TextBlock x:Name="DescriptionTxt" Text="Программа предназначена для автоматизации магазина косметики" FontSize="24" Margin="10" TextWrapping="WrapWithOverflow"/>
         </Border>
 
         <Border Margin="25,20" Width="290" VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Column="1" BorderBrush="{DynamicResource WinBrdr}" BorderThickness="5" CornerRadius="6">
-            <Path Margin="10" Data="{DynamicResource Logo}" Fill="{DynamicResource TextColor}" Stretch="Fill" />
+            <Path Margin="10" Stretch="Fill" />
         </Border>
     </Grid>
 </Page>

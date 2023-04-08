@@ -3,17 +3,23 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:Matrix.View.Pages"
+      xmlns:local="clr-namespace:Matrix.View.Pages" xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
       mc:Ignorable="d" 
+            Foreground="{DynamicResource TextFillColorPrimaryBrush}"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ProductPage" Loaded="Page_Loaded">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="416*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <ui:Button Grid.Row="2" Height="50" Appearance="Secondary" HorizontalAlignment="Stretch" Content="Добавить" x:Name="ProductAddBtn" Click="ProductAddBtn_Click"/>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Height="50" VerticalAlignment="Top">
-            <ComboBox x:Name="CategoryCombo" DisplayMemberPath="CategoryName"  Width="250" Height="33" VerticalAlignment="Center" SelectionChanged="BrandCombo_SelectionChanged"/>
-            <ComboBox x:Name="BrandCombo" DisplayMemberPath="BrandName" Margin="5,0"  Width="250" Height="33" VerticalAlignment="Center" SelectionChanged="BrandCombo_SelectionChanged"/>
-            <ComboBox x:Name="FilterCombo" Width="250"  Height="33" VerticalAlignment="Center" SelectionChanged="BrandCombo_SelectionChanged"/>
+            <ComboBox x:Name="CategoryCombo" DisplayMemberPath="CategoryName"  Width="250" VerticalAlignment="Center" SelectionChanged="BrandCombo_SelectionChanged"/>
+            <ComboBox x:Name="BrandCombo" DisplayMemberPath="BrandName" Margin="5,0"  Width="250" VerticalAlignment="Center" SelectionChanged="BrandCombo_SelectionChanged"/>
+            <ComboBox x:Name="FilterCombo" Width="250" VerticalAlignment="Center" SelectionChanged="BrandCombo_SelectionChanged" Margin="0,0,10,0"/>
         </StackPanel>
-        <ListView x:Name="ProductsList" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="0,50,0,0" d:ItemsSource="{d:SampleData ItemCount=5}" Background="Transparent" BorderThickness="0" >
+        <ListView x:Name="ProductsList" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="0,50,0,0" Background="Transparent" BorderThickness="0" d:ItemsSource="{d:SampleData ItemCount=5}">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel Orientation="Horizontal" />
@@ -33,12 +39,12 @@
                                                 <TextBlock x:Name="proDisc" Text="{Binding Discount, StringFormat={}{0} %}" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="UltraBlack"/>
                                             </Border>
                                             <Image Source="{Binding Image}" VerticalAlignment="Top" HorizontalAlignment="Center" Width="150" Margin="32" Height="150"/>
-                                            <TextBlock Text="{Binding ProductName}" TextWrapping="WrapWithOverflow" FontWeight="DemiBold" Margin="32,195,32,0"/>
-                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="32,27">
-                                                <TextBlock Foreground="Black" FontWeight="Bold" Text="{Binding TotalPrice, StringFormat={}{0} ₽}" />
-                                                <TextBlock x:Name="OldPrice" TextDecorations="Strikethrough" Margin="5,0,0,0" Foreground="Gray" Text="{Binding Price, StringFormat={}{0} ₽}"/>
+                                            <TextBlock Text="{Binding ProductName}" Foreground="Black" TextWrapping="WrapWithOverflow" FontWeight="DemiBold" Margin="32,195,32,0"/>
+                                            <StackPanel Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="32,27">
+                                                <TextBlock Foreground="Black"  Text="{Binding TotalPrice, StringFormat={}{0} ₽}" />
+                                                <TextBlock x:Name="OldPrice" TextDecorations="Strikethrough" Foreground="Gray" Text="{Binding Price, StringFormat={}{0} ₽}"/>
                                             </StackPanel>
-                                            <TextBlock x:Name="StarRating" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="32,27" Text="★★★★★"/>
+                                            <ui:Rating x:Name="StarRating" Value="{Binding AvgRating}" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="15,27"/>
                                         </Grid>
                                     </Border>
                                 </Grid>
