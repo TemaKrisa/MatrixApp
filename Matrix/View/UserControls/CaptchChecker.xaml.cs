@@ -45,7 +45,7 @@ namespace Matrix.View.UserControls
         private void GenerateSymbols(int count)
         {
             b = "";
-            var col = (SolidColorBrush)App.Current.Resources["TextColor"];
+            var col = (SolidColorBrush)App.Current.Resources["TextFillColorPrimaryBrush"];
             string alphabet = "QWERTYUIPASDFGHJKLZXCVBNM23456789";
             StringBuilder bldr = new StringBuilder();
             for (int i = 0; i < count; i++)

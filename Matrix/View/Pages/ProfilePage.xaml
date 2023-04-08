@@ -3,20 +3,20 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:Matrix.View.Pages" xmlns:uc="clr-namespace:Matrix.View.UserControls"
-      mc:Ignorable="d" 
+      xmlns:local="clr-namespace:Matrix.View.Pages" xmlns:uc="clr-namespace:Matrix.View.UserControls" xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+      mc:Ignorable="d" Foreground="{DynamicResource TextFillColorPrimaryBrush}"
        Loaded="ProfilePage_Loaded">
 
     <Grid>
         <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
             <StackPanel Orientation="Vertical" Margin="50,0">
-                <TextBlock FontSize="48" FontWeight="Black" Foreground="{DynamicResource TextColor}" Text="Профиль" Margin="0,10"/>
-                <Border CornerRadius="6" Background="{DynamicResource Back}"  Height="140">
+                <TextBlock FontSize="48" FontWeight="Black" Text="Профиль" Margin="0,10"/>
+                <Border CornerRadius="6"  Height="140">
                     <Grid>
-                        <TextBlock Text="ЭЛЕКТРОННАЯ ПОЧТА" FontSize="16" FontWeight="Medium" Foreground="{DynamicResource TextColor}" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,10,-10,0"/>
-                        <Label x:Name="txtEmail" Content="{Binding Email}" FontSize="18" FontWeight="Bold" Foreground="{DynamicResource TextColor}" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,31,0,0"/>
-                        <TextBlock Text="ФИО" FontSize="16" FontWeight="Medium" Foreground="{DynamicResource TextColor}" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,62,0,0"/>
-                        <Label x:Name="txtFIO" FontSize="18" FontWeight="Bold" Foreground="{DynamicResource TextColor}" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,83,0,0">
+                        <TextBlock Text="ЭЛЕКТРОННАЯ ПОЧТА" FontSize="16" FontWeight="Medium" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,10,-10,0"/>
+                        <Label x:Name="txtEmail" Content="{Binding Email}" FontSize="18" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,31,0,0"/>
+                        <TextBlock Text="ФИО" FontSize="16" FontWeight="Medium" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,62,0,0"/>
+                        <Label x:Name="txtFIO" FontSize="18" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,83,0,0">
                             <Label.Content>
                                 <TextBlock>
                                     <TextBlock.Text>
@@ -29,14 +29,14 @@
                                 </TextBlock>
                             </Label.Content>
                         </Label>
-                        <Button x:Name="FIOChangeBtn" HorizontalAlignment="Right" VerticalAlignment="Top"  Height="33" Margin="0,83,10,0" Style="{DynamicResource btn}" Foreground="White" Content="Изменить" Width="120" RenderTransformOrigin="0.3,2.891" Click="FIOChangeBtn_Click"/>
+                        <ui:Button x:Name="FIOChangeBtn" Appearance="Info" HorizontalAlignment="Right" VerticalAlignment="Top"  Height="33" Margin="0,83,10,0" Content="Изменить" Width="120" FontSize="18" FontWeight="Bold" Click="FIOChangeBtn_Click"/>
                     </Grid>
                 </Border>
-                <TextBlock FontSize="36" FontWeight="Black" Foreground="{DynamicResource TextColor}" Text="Пароль" Margin="0,10"/>
-                <Button x:Name="ChangePasBtn" Style="{DynamicResource btn}" Height="45" FontWeight="SemiBold" HorizontalAlignment="Left" Foreground="White" Content="Изменить пароль" Width="216" Click="ChangePasBtn_Click"/>
-                <TextBlock FontSize="36" FontWeight="Black" Foreground="{DynamicResource TextColor}" Text="Управление учётной записью" Margin="0,10"/>
+                <TextBlock FontSize="36" FontWeight="Black" Text="Пароль" Margin="0,10"/>
+                <ui:Button x:Name="ChangePasBtn" FontSize="24"  Height="45" FontWeight="SemiBold" HorizontalAlignment="Left" Appearance="Info" Content="Изменить пароль" Width="230" Click="ChangePasBtn_Click"/>
+                <TextBlock FontSize="36" FontWeight="Black" Text="Управление учётной записью" Margin="0,10"/>
                 <Grid Height="45">
-                    <Button x:Name="LogOutBtn" Style="{DynamicResource btn}" Content="Выйти из учетной записи" FontWeight="SemiBold" Background="Red" Foreground="White" Height="45" HorizontalAlignment="Left" Width="230" Click="LogOutBtn_Click" Margin="0,0,20,0"/>
+                    <ui:Button x:Name="LogOutBtn" Content="Выйти из учетной записи" FontWeight="SemiBold" Background="Red" Foreground="White" Height="45" HorizontalAlignment="Left" Width="320" FontSize="24"  Click="LogOutBtn_Click" Margin="0,0,20,0"/>
                 </Grid>
             </StackPanel>
         </ScrollViewer>

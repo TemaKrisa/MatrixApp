@@ -32,36 +32,49 @@ namespace Matrix.View.Pages
             txtBrand.ItemsSource = Brand;
             txtManufacturer.ItemsSource = Manufacturer;
             txtCategory.ItemsSource = Category;
-            txtManufacturer.SelectedIndex = (product.Manufacturer - 1);
-            txtCategory.SelectedIndex = (product.Category - 1);
-            txtBrand.SelectedIndex = (product.Brand - 1);
-            txtCount.Text = product.Count.ToString();
-            txtName.Text = product.ProductName;
-            txtPrice.Text = $"{product.Price:F2}";
-            txtDiscount.Text = product.Discount.ToString();
-            TxtDescription.Text = product.Description;
-            ProductTitle.Text = product.ProductName;
-            using (MemoryStream ms = new MemoryStream(product.Image))
+            if (product != null)
             {
-                // Создаем BitmapImage из MemoryStream
-                BitmapImage bmpImage = new BitmapImage();
-                bmpImage.BeginInit();
-                bmpImage.StreamSource = ms;
-                bmpImage.CacheOption = BitmapCacheOption.OnLoad;
-                bmpImage.EndInit();
+                txtManufacturer.SelectedIndex = (product.Manufacturer - 1);
+                txtCategory.SelectedIndex = (product.Category - 1);
+                txtBrand.SelectedIndex = (product.Brand - 1);
+                txtCount.Text = product.Count.ToString();
+                txtName.Text = product.ProductName;
+                txtPrice.Value = (double)product.Price;
+                txtDiscount.Text = product.Discount.ToString();
+                TxtDescription.Text = product.Description;
+                ProductTitle.Text = product.ProductName;
+                using (MemoryStream ms = new MemoryStream(product.Image))
+                {
+                    // Создаем BitmapImage из MemoryStream
+                    BitmapImage bmpImage = new BitmapImage();
+                    bmpImage.BeginInit();
+                    bmpImage.StreamSource = ms;
+                    bmpImage.CacheOption = BitmapCacheOption.OnLoad;
+                    bmpImage.EndInit();
 
-                // Устанавливаем свойство Source элемента Image в созданный BitmapImage
-                ProductImg.Source = bmpImage;
+                    // Устанавливаем свойство Source элемента Image в созданный BitmapImage
+                    ProductImg.Source = bmpImage;
+                }
+            }
+            else
+            {
+                txtManufacturer.SelectedIndex = 0;
+                txtCategory.SelectedIndex = 0;
+                txtBrand.SelectedIndex = 0;
             }
         }
 
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
-            byte[] imageData;
-
-            var m = (Manufacturer)txtManufacturer.SelectedItem;
-            var b = (Brand)txtBrand.SelectedItem;
-            var c = (ProductCategory)txtCategory.SelectedItem;
+            if (ProductImg.Source == null) MessageBoxs.Show("Добавьте изображение товара", "Товар");
+            else if (TxtDescription.Text == null) MessageBoxs.Show("Добавьте описание товара", "Товар");
+            else if (txtName.Text == null) MessageBoxs.Show("Добавьте наименование товара", "Товар");
+            else
+            {
+                byte[] imageData;
+                var m = (Manufacturer)txtManufacturer.SelectedItem;
+                var b = (Brand)txtBrand.SelectedItem;
+                var c = (ProductCategory)txtCategory.SelectedItem;
                 BitmapImage bmpImage = (BitmapImage)ProductImg.Source;
 
                 using (MemoryStream ms = new MemoryStream())
@@ -73,41 +86,42 @@ namespace Matrix.View.Pages
                     // Получаем массив байтов из MemoryStream
                     imageData = ms.ToArray();
                 }
-            using CosmeticshopContext dc = new();
-            if (product == null)
-            {
-                Product pr2 = new Product()
+                using CosmeticshopContext dc = new();
+                if (product == null)
                 {
-                    Discount = Convert.ToInt32(txtDiscount.Text),
-                    Manufacturer = m.ManufacturerId,
-                    Brand = b.BrandId,
-                    Category = c.CategoryId,
-                    Price = Convert.ToDecimal(txtPrice.Text),
-                    TotalPrice = Convert.ToDecimal(txtPrice.Text) - (Convert.ToDecimal(txtPrice.Text) * (Convert.ToDecimal(txtDiscount.Text) / 100)),
-                    Image = imageData,
-                    Description = TxtDescription.Text,
-                    Count = Convert.ToInt32(txtDiscount.Text),
-                    ProductName = txtName.Text
-                };
-                dc.Products.Add(pr2);
-            }
-            else
-            {
-                product.Discount = Convert.ToInt32(txtDiscount.Text);
-                product.Manufacturer = m.ManufacturerId;
-                product.Brand = b.BrandId;
-                product.Category = c.CategoryId;
-                product.Price = Convert.ToDecimal(txtPrice.Text);
-                product.TotalPrice = Convert.ToDecimal(txtPrice.Text) - (Convert.ToDecimal(txtPrice.Text) * (Convert.ToDecimal(txtDiscount.Text) / 100));
-                product.Image = imageData;
-                product.Description = TxtDescription.Text;
-                product.Count = Convert.ToInt32(txtDiscount.Text);
-                product.ProductName = txtName.Text;
-                dc.Products.Update(product);
-            }
+                    Product pr2 = new Product()
+                    {
+                        Discount = Convert.ToInt32(txtDiscount.Text),
+                        Manufacturer = m.ManufacturerId,
+                        Brand = b.BrandId,
+                        Category = c.CategoryId,
+                        Price = Convert.ToDecimal(txtPrice.Text),
+                        TotalPrice = Convert.ToDecimal(txtPrice.Text) - (Convert.ToDecimal(txtPrice.Text) * (Convert.ToDecimal(txtDiscount.Text) / 100)),
+                        Image = imageData,
+                        Description = TxtDescription.Text,
+                        Count = Convert.ToInt32(txtDiscount.Text),
+                        ProductName = txtName.Text
+                    };
+                    dc.Products.Add(pr2);
+                }
+                else
+                {
+                    product.Discount = Convert.ToInt32(txtDiscount.Text);
+                    product.Manufacturer = m.ManufacturerId;
+                    product.Brand = b.BrandId;
+                    product.Category = c.CategoryId;
+                    product.Price = (decimal)txtPrice.Value;
+                    product.TotalPrice = Convert.ToDecimal(txtPrice.Value) - (Convert.ToDecimal(txtPrice.Value) * (Convert.ToDecimal(txtDiscount.Value) / 100));
+                    product.Image = imageData;
+                    product.Description = TxtDescription.Text;
+                    product.Count = Convert.ToInt32(txtCount.Text);
+                    product.ProductName = txtName.Text;
+                    dc.Products.Update(product);
+                }
                 dc.SaveChanges();
-            Navigation.F2.GoBack();
-            MessageBoxs.ShowDialog("Изменения прошли успешно", "Изменение каталога продуктов");
+                Navigation.F2.GoBack();
+                MessageBoxs.ShowDialog("Изменения прошли успешно", "Изменение каталога продуктов");
+            }
         }
 
         private void ChangeImgBtn_Click(object sender, RoutedEventArgs e)

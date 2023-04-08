@@ -42,5 +42,10 @@ namespace Matrix.View.UserControls
         private void EmailGrid_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e) { if (Visibility == Visibility.Visible) LogFailed = false; }
 
         private void EmailCancelBtn_Click(object sender, RoutedEventArgs e) => this.Visibility = Visibility.Collapsed;
+
+        private void CloseBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.Visibility = Visibility.Collapsed;
+        }
     }
 }

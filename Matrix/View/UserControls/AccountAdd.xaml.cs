@@ -33,7 +33,11 @@ namespace Matrix.View.UserControls
                 else
                 {
                     Usertype? q = UsertypeCombo.SelectedItem as Usertype;
-                    Account ac = new() { Email = EmailBox.Text, Phone = ConverterClass.PhoneConverter(txtPhoneBox.Text), Password = PasswordBox.Password, Name = NameBox.Text, Surname = SurnameBox.Text, Midname = MidnameBox.Text, Usertype = q.UsertypeId };
+                    Account ac = new() { Email = EmailBox.Text, Phone = ConverterClass.PhoneConverter(txtPhoneBox.Text), Password = PasswordBox.Password, Name = NameBox.Text, Surname = SurnameBox.Text, Midname = MidnameBox.Text, Usertype = q.UsertypeId,
+                        Street = txtStreetBox.Text,
+                        House = txtHouseBox.Text,
+                        Flat = txtFlatBox.Text,
+                    }; 
                     dc.Accounts.Add(ac);
                     dc.SaveChanges();
                     Visibility = Visibility.Collapsed;
@@ -46,11 +50,15 @@ namespace Matrix.View.UserControls
         //Сброс введенных данных при закрытии
         private void AccAddGrid_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            EmailBox.Text = "";
-            PasswordBox.Password = "";
-            NameBox.Text = "";
-            SurnameBox.Text = "";
-            MidnameBox.Text = "";
+            EmailBox.Text = string.Empty;
+            PasswordBox.Password = string.Empty;
+            NameBox.Text = string.Empty;
+            SurnameBox.Text = string.Empty;
+            MidnameBox.Text = string.Empty;
+            txtPhoneBox.Text = string.Empty;
+            txtHouseBox.Text = string.Empty;
+            txtFlatBox.Text = string.Empty;
+            txtStreetBox.Text = string.Empty;
         }
     }
 }

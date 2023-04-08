@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="Matrix.View.UserControls.CategoryControl"
+﻿<UserControl x:Class="Matrix.View.UserControls.CreateReview"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -11,14 +11,14 @@
         <Border Background="{DynamicResource ApplicationBackgroundBrush}" BorderBrush="{DynamicResource ControlElevationBorderBrush}" CornerRadius="8" BorderThickness="1" Height="175" Width="400">
             <Grid>
                 <ui:Button x:Name="CloseBtn" Appearance="Transparent" Icon="Dismiss24"  VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,5,5,0" FontSize="16"  Height="25" Width="36" Background="Transparent" BorderThickness="0" Click="CloseBtn_Click"/>
+
                 <StackPanel Orientation="Vertical">
                     <TextBlock Text="Категория" FontSize="25" HorizontalAlignment="Center" Margin="25,20,25,5" FontWeight="UltraBlack"/>
                     <TextBlock Text="Наименование" FontSize="14" FontWeight="DemiBold" Margin="10,5"/>
                     <ui:TextBox x:Name="txtCategory" Margin="10,0" PlaceholderText="Категория"/>
-                    <ui:Button x:Name="AddBtn" HorizontalAlignment="stretch" FontWeight="Bold" Appearance="Info"  Height="35" Margin="10,10,10,10" Content="Сохранить" Click="AddBtn_Click"/>
+                    <ui:Button x:Name="AddBtn" HorizontalAlignment="stretch" FontWeight="Bold" Appearance="Info"  Height="35" Margin="10,10,10,10" Content="Сохранить"/>
                 </StackPanel>
             </Grid>
         </Border>
     </Grid>
 </UserControl>
-

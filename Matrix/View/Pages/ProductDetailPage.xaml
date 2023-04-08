@@ -3,13 +3,13 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:Matrix.View.Pages"
+      xmlns:local="clr-namespace:Matrix.View.Pages" xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
       mc:Ignorable="d" 
+            Foreground="{DynamicResource TextFillColorPrimaryBrush}"
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="ProductDetailPage" Background="{DynamicResource BackSec}">
+      Title="ProductDetailPage">
     <Page.Resources>
         <Style TargetType="TextBlock">
-            <Setter Property="Foreground" Value="{DynamicResource TextColor}"/>
             <Setter Property="TextWrapping" Value="Wrap"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
         </Style>
@@ -25,30 +25,30 @@
             <RowDefinition Height="46*"/>
             <RowDefinition Height="29*"/>
         </Grid.RowDefinitions>
-        <TextBlock x:Name="ProductTitle" Text="{Binding ProductName}" TextWrapping="NoWrap" FontWeight="UltraBlack" Margin="10,0,0,0" Grid.ColumnSpan="5" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="36" Foreground="{DynamicResource TextColor}"/>
+        <TextBlock x:Name="ProductTitle" Text="{Binding ProductName}" TextWrapping="NoWrap" FontWeight="UltraBlack" Margin="10,0,0,0" Grid.ColumnSpan="5" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="36"/>
         <Image Source="{Binding Image}" Grid.Row="1" Margin="25,0,25,0" Height="200" Stretch="Fill"/>
         <Grid Grid.Row="1" Grid.Column="1">
             <StackPanel Orientation="Vertical">
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Margin="0,5" FontSize="18" FontWeight="Bold" Text="Категория: "/>
+                    <TextBlock Margin="0,5" FontSize="18"  Text="Категория: "/>
                     <TextBlock x:Name="txtCategory" FontSize="18"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Margin="0,5" FontSize="18" FontWeight="Bold" Text="Производитель: "/>
+                    <TextBlock Margin="0,5" FontSize="18"  Text="Производитель: "/>
                     <TextBlock x:Name="txtManufacturer" FontSize="18"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Margin="0,5" FontWeight="Bold" FontSize="18" Text="Бренд: "/>
+                    <TextBlock Margin="0,5"  FontSize="18" Text="Бренд: "/>
                     <TextBlock x:Name="txtBrand" FontSize="18"/>
                 </StackPanel>
                 <Grid>
-                    <TextBlock Margin="0,5" FontWeight="Bold" FontSize="18" Text="Описание: "/>
+                    <TextBlock Margin="0,5"  FontSize="18" Text="Описание: "/>
                     <TextBlock Margin="60,5,0,5" Padding="40,0" Text="{Binding Description}" FontSize="18" TextWrapping="Wrap"/>
                 </Grid>
             </StackPanel>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" Width="200" Height="140">
-            <Border Background="{DynamicResource Back}"  CornerRadius="16">
+            <Border Background="{DynamicResource ApplicationBackgroundBrush}"  CornerRadius="16">
                 <Border.Effect>
                     <DropShadowEffect/>
                 </Border.Effect>
@@ -59,53 +59,17 @@
                     <RowDefinition Height="69*"/>
                 </Grid.RowDefinitions>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <TextBlock Text="{Binding Price, StringFormat={}{0} ₽}" Margin="10,10,0,0" FontSize="24" VerticalAlignment="Top" Foreground="{DynamicResource TextColor}"/>
+                    <TextBlock Text="{Binding Price, StringFormat={}{0} ₽}" Margin="10,10,0,0" FontSize="24" VerticalAlignment="Top"/>
                     <TextBlock x:Name="txtTotalPrice" Text="{Binding TotalPrice, StringFormat={}{0} ₽}" Foreground="Gray" FontSize="20" Margin="5,10,0,0" VerticalAlignment="Bottom" TextDecorations="Strikethrough"/>
                 </StackPanel>
                 <StackPanel x:Name="CartAddPanel" Visibility="Collapsed" Orientation="Horizontal"  VerticalAlignment="Center" Margin="12,0,12,0" Height="50" Width="175" Grid.Row="1">
-                    <Button x:Name="CartEnterBtn" Style="{DynamicResource btn}" FontWeight="Bold" Click="CartEnterBtn_Click" Content="В корзине" Background="Green" />
-                    <Button x:Name="CartIncBtn" Style="{DynamicResource btn}" Click="CartIncBtn_Click" Margin="5,0,0,0" FontWeight="Bold" Content="+"/>
-                    <TextBlock x:Name="txtProductCart" Text="1" Width="20" FontSize="16" TextAlignment="Center" FontWeight="Bold"/>
-                    <Button x:Name="CartDecBtn" Style="{DynamicResource btn}" Click="CartDecBtn_Click" FontWeight="Bold" Content="-"/>
+                    <ui:Button Appearance="Success" x:Name="CartEnterBtn" Width="89" Click="CartEnterBtn_Click" Content="В корзине"/>
+                    <ui:Button Icon="Add24" Height="30" x:Name="CartIncBtn" Click="CartIncBtn_Click" Width="30" FontSize="10"  Margin="5,0,0,0"/>
+                    <TextBlock x:Name="txtProductCart" Text="1" Width="20" FontSize="16" TextAlignment="Center" />
+                    <Button x:Name="CartDecBtn" Click="CartDecBtn_Click" Height="30" Width="30"  Content="-"/>
                 </StackPanel>
-                <Button x:Name="CartAddBtn" Visibility="Visible" Style="{DynamicResource btn}" Click="CartAddBtn_Click" FontWeight="Bold" Height="50" Width="176" Content="Добавить в корзину" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1"/>
-            </Grid>
+                <Button x:Name="CartAddBtn" Visibility="Visible" FontSize="15" FontWeight="Bold" Click="CartAddBtn_Click"  Height="50" Width="176" Content="Добавить в корзину" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1"/>
+            </Grid> 
         </Grid>
-        <StackPanel Orientation="Vertical" Grid.Row="2" Grid.Column="1">
-            <TextBlock Foreground="{DynamicResource TextColor}" VerticalAlignment="Top" FontWeight="UltraBlack" FontSize="24">Отзывы о товаре</TextBlock>
-            <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="ListMessages" Grid.Row="1" BorderThickness="0" Background="Transparent" d:ItemsSource="{d:SampleData ItemCount=5}">
-                <ListView.ItemContainerStyle>
-                    <Style TargetType="{x:Type ListViewItem}">
-                        <Setter Property="Template">
-                            <Setter.Value>
-                                <ControlTemplate>
-                                    <Border x:Name="bdw" BorderThickness="1" CornerRadius="6" Margin="3,5" Height="auto">
-                                        <StackPanel Margin="20,0">
-                                                <TextBlock x:Name="AuthorName" FontWeight="Bold" Foreground="{DynamicResource TextColor}" VerticalAlignment="Center" Margin="0,0,-5,0" FontSize="16">
-                                                    <TextBlock.Text>
-                                                        <MultiBinding StringFormat="{}{0} {1} {2}">
-                                                            <Binding Path="AuthorNavigation.Surname"/>
-                                                            <Binding Path="AuthorNavigation.Name"/>
-                                                            <Binding Path="AuthorNavigation.Midname"/>
-                                                        </MultiBinding>
-                                                    </TextBlock.Text>
-                                                </TextBlock>
-                                            <TextBlock Text="{Binding Message}" Foreground="{DynamicResource TextColor}"  VerticalAlignment="Center" Margin="0,0,3,0" Height="auto" TextWrapping="Wrap" FontSize="14"/>
-                                            <Grid Height="5"/>
-                                        </StackPanel>
-                                    </Border>
-                                    <ControlTemplate.Triggers>
-                                        <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter Property="Background" TargetName="bdw" Value="{DynamicResource Back}"/>
-                                        </Trigger>
-                                    </ControlTemplate.Triggers>
-                                </ControlTemplate>
-                            </Setter.Value>
-                        </Setter>
-                    </Style>
-                </ListView.ItemContainerStyle>
-            </ListView>
-        </StackPanel>
-        
     </Grid>
 </Page>

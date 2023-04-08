@@ -30,7 +30,7 @@ namespace Matrix.View.UserControls
             {
                 //Смена пароля
                 var q = dc.Accounts.Single(u => u.Email == GetResEmail);
-                q.Password = NewPasConfirm.Password;
+                q.Password = HashClass.HashPassword(NewPasConfirm.Password);
                 dc.Accounts.Update(q);
                 dc.SaveChanges();
                 MessageBoxs.Show("Пароль успешно изменён!", "Востановление пароля");

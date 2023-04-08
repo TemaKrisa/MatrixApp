@@ -53,5 +53,10 @@ namespace Matrix.View.UserControls
             IsSent = false;
             this.Visibility = Visibility.Collapsed;
         }
+
+        private void CloseBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.Visibility = Visibility.Collapsed;
+        }
     }
 }

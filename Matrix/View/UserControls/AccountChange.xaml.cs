@@ -30,11 +30,14 @@ namespace Matrix.View.UserControls
         private void AccChangeGrid_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)  //Событие заполнения полей
         {
             EmailBox.Text = Account1.Email;
-            PasswordBox.Password = Account1.Password;
             MidnameBox.Text = Account1.Midname;
             NameBox.Text = Account1.Name;
             SurnameBox.Text = Account1.Surname;
             UsertypeCombo.SelectedIndex = (Account1.Usertype - 1);
+            txtPhoneBox.Text = Account1.Phone.ToString().Substring(1);
+            txtFlatBox.Text = Account1.Flat;
+            txtHouseBox.Text = Account1.House;
+            txtStreetBox.Text = Account1.Street;
         }
 
         private async Task ChangeAccount()
@@ -52,11 +55,16 @@ namespace Matrix.View.UserControls
                 var q = (Usertype)UsertypeCombo.SelectedItem;
                 Account? ac1 = await dc.Accounts.FindAsync(Account1.UserId);
                 ac1.Email = EmailBox.Text;
-                ac1.Password = PasswordBox.Password;
+                if (!string.IsNullOrEmpty( PasswordBox.Password))
+                ac1.Password = HashClass.HashPassword(PasswordBox.Password);
                 ac1.Midname = MidnameBox.Text;
                 ac1.Name = NameBox.Text;
                 ac1.Surname = SurnameBox.Text;
                 ac1.Usertype = q.UsertypeId;
+                ac1.Phone = ConverterClass.PhoneConverter(txtPhoneBox.Text);
+                ac1.Street = txtStreetBox.Text;
+                ac1.House = txtHouseBox.Text;
+                ac1.Flat = txtFlatBox.Text;
                 await dc.SaveChangesAsync();
                 this.Visibility = Visibility.Collapsed;
                 MessageBoxs.ShowDialog("Изменение прошло успешно!", "Изменение аккаунта");
